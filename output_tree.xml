@@ -1,0 +1,3374 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dbFn>
+    <children>
+        <children>
+            <children>
+                <children>
+                    <description>INSTR(string, substring, position, occurrence) 형식으로 사용합니다.
+                        INSTR 함수는 문자열에서 부분 문자열을 검색합니다.
+                        string은 검색 대상이 되는 문자열이고, substring은 검색할 부분 문자열입니다.
+                        position은 검색을 시작할 위치 인덱스 값입니다. occurrence은 검색할 문자열의 발생 횟수를 나타냅니다.
+
+                        SELECT INSTR('CORPORATE FLOOR','OR', 3, 2) FROM DUAL은 주어진 문자열의 3번째 index부터
+                        'OR'문자가 2번째로 나타나는 위치를 반환합니다.
+</description>
+                    <examples>
+                        <example>
+                            <query>SELECT INSTR('CORPORATE FLOOR','OR', 3, 2) FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>INSTR</name>
+                    <parentId>26</parentId>
+                </children>
+                <children>
+                    <description>LENGTH(arg1)형식으로 사용합니다.
+                        LENGTH 함수는 문자열의 길이를 반환합니다.
+                        LENGTHB는 문자 대신 바이트를 사용합니다.
+                        SELECT LENGTH('CANDIDE') FROM DUAL 싱글 바이트 문자셋,
+                        SELECT LENGTHB ('CANDIDE') FROM DUAL는 더블 바이트 문자셋의 예시입니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT LENGTH('CANDIDE') FROM DUAL;</query>
+                        </example>
+                        <example>
+                            <query>SELECT LENGTHB ('CANDIDE') FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>LENGTH</name>
+                    <parentId>26</parentId>
+                </children>
+                <children>
+                    <description>REGEXP_INSTR(source_string, pattern, position, occurrence,
+                        return_option, match_parameter) 형식으로 사용합니다.
+                        REGEXP_INSTR 함수는 INSTR 함수의 기능을 확장하여 문자열에서 정규 표현식 패턴을 검색할 수 있게 해줍니다. 이 함수는 입력
+                        문자셋에서 정의된 문자를 사용하여 문자열을 평가합니다.
+                        return_option 인자의 값에 따라 일치하는 부분 문자열의 시작 또는 끝 위치를 나타내는 정수를 반환합니다. 일치하는 항목이 없는
+                        경우 함수는 0을 반환합니다.
+
+                        SELECT REGEXP_INSTR('500 Oracle Parkway, Redwood Shores, CA', '[^ ]+', 1, 6)
+                        FROM DUAL은
+                        1번째 index부터 검색하여 공백으로 시작하지 않는 문자열이 6번째로 발견되는 곳의 위치값을 반환합니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT REGEXP_INSTR('500 Oracle Parkway, Redwood Shores, CA', '[^
+                                ]+', 1, 6) FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>REGEXP_INSTR</name>
+                    <parentId>26</parentId>
+                </children>
+                <children>
+                    <description>ASCII(arg1) 형식으로 사용합니다.
+                        ASCII 함수는 CHAR 타입 인자의 아스키 코드 값을 10진수로 반환합니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT ASCII('Q') FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>ASCII</name>
+                    <parentId>26</parentId>
+                </children>
+                <description>문자 타입을 인자로 받아 숫자 타입을 반환합니다.</description>
+                <name>숫자를 반환하는 문자 함수(Character Functions Returning Number Values)</name>
+                <parentId>24</parentId>
+            </children>
+            <children>
+                <children>
+                    <description>CHR(n USING NCHAR_CS) 형식으로 사용합니다.
+                        CHR함수는 데이터베이스 문자 세트 또는 각국어 문자세트(NCHAR_CS를 지정시)인 안의 VARCHAR2 값으로 n과 동등한 2진수를
+                        가지는 문자를 반환합니다.
+                        보통 아스키 코드를 문자로 변환해서 반환합니다.
+                        싱글 바이트 문자 세트의 경우, 만약 n&gt;256인 경우, 오라클 데이터베이스는 n mod(나머지) 256의 동일한 이진수를
+                        반환합니다. 멀티 바이트 문자셋의 경우, 인수 n은 하나의 전체적 코드 포인트를 해결할 필요가 있습니다.
+                        유효하지 않은 코드 포인트는 검증되지 않고, 유효하지 않은 코드 포인트를 지정했을 경우의 결과는 예측이 불가능합니다.
+
+                        데이터베이스 문자셋이 WE8ISO8859P1로 정의되는 ASCII 기반 시스템에서
+                        SELECT CHR(67)||CHR(65)||CHR(84) FROM DUAL; 쿼리가 실행되면 CAT을 반환합니다.
+                        WE8EBCDIC1047의 EBCDIC 기반 시스템에서 같은 결과를 반환하려면 아래와 같이 쿼리를 변환해야 합니다.
+                        SELECT CHR(195)||CHR(193)||CHR(227) FROM DUAL;</description>
+                    <examples>
+                        <example>
+                            <query>SELECT CHR(67)||CHR(65)||CHR(84) FROM DUAL;</query>
+                        </example>
+                        <example>
+                            <query>SELECT CHR(195)||CHR(193)||CHR(227) FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>CHR</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>CONCAT(str1, str2)형식으로 사용합니다.
+                        CONCAT 함수는 str1, str2를 연결한 결과를 반환합니다. 각 인자는 CHAR, VARCHAR2, NCHAR,
+                        NVARCHAR2, CLOB, NCLOB 중 어느 타입이든 가능하며 반환되는 문자열은 str1과 동일한 문자셋으로, 데이터 타입은
+                        인자들의 데이터 타입에 따라 결정됩니다.
+</description>
+                    <examples>
+                        <example>
+                            <query>SELECT CONCAT(CONCAT(last_name, '''s job category is '), job_id)
+                                FROM employees WHERE employee_id = 152;</query>
+                        </example>
+                    </examples>
+                    <name>CONCAT</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>INITCAP(arg1)형식으로 사용합니다.
+                        각 단어의 첫 글자를 대문자로, 나머지 글자들을 소문자로 변환한 결과를 반환합니다. 단어는 공백이나 알파벳 이외의 문자로 구분됩니다.
+                        인자는 CHAR, VARCHAR2, NCHAR, NVARCHAR2 중 어떤 데이터 타입이든 될 수 있습니다. 반환되는 값의 데이터 타입은
+                        인자의 타입과 동일합니다.
+                        이 함수는 CLOB 데이터를 직접 지원하지 않습니다. 그러나 암묵적인 데이터 변환을 통해 CLOB를 인자로 전달할 수 있습니다.
+                        SELECT INITCAP('the soap') FROM DUAL; 쿼리는 The Soap를 반환하는 예시입니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT INITCAP('the soap') FROM DUAL; </query>
+                        </example>
+                    </examples>
+                    <name>INITCAP</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>LOWER(arg1) 형식으로 사용합니다.
+                        LOWER은 인자로 전달되는 문자열의 모든 글자를 소문자로 변환한 결과를 반환합니다. 인자는 CHAR, VARCHAR2, NCHAR,
+                        NVARCHAR2, CLOB, NCLOB 중 어떤 데이터 타입이든 될 수 있습니다. 반환되는 값의 데이터 타입은 인자의 타입과
+                        동일합니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT LOWER('MR. SCOTT MCMILLAN') FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>LOWER</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>LTRIM(str, set) 형식으로 사용합니다.
+                        두 번째 인자로 전달된 문자셋에 속한 문자를 첫 번째로 인자로 전달된 문자열의 왼쪽 끝에서부터 찾아서 제거합니다. 두 번째 인자를
+                        지정하지 않으면 공백이 사용됩니다. 두 번째 문자셋에 속하지 않는 문자가 나올 때까지 반복됩니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT LTRIM('xyxXxyLAST WORD','xy') FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>LTRIM</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>NLS_INITCAP(str, nlsparam)형식으로 사용합니다.
+                        NLS_INITCAP 함수는 인자로 전달된 문자열에서 각 단어의 첫 글자를 대문자로, 나머지 글자를 소문자로 변환하여 반환합니다.
+                        단어는 영숫자가 아닌 문자 또는 공백으로 구분됩니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT NLS_INITCAP ('ijsland') FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>NLS_INITCAP</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>NLS_LOWER(str, nlsparam)형식으로 사용합니다.
+                        NLS_LOWER 함수는 str을 소문자로 반환합니다. str와 nlsparam은 CHAR, VARCHAR2, NCHAR,
+                        NVARCHAR2, CLOB 또는 NCLOB와 같은 데이터 타입이 될 수 있습니다.
+                        반환되는 문자열은 동일한 문자셋으로 된 VARCHAR2 타입입니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT NLS_LOWER('CITTA''', 'NLS_SORT = XGerman') FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>NLS_LOWER</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>NLSSORT(str, nlsparam) 형식으로 사용합니다.
+                        NLSSORT함수는 char를 정렬하는데 사용되는 바이트 문자열을 반환합니다.
+                        str와 nlsparam은 CHAR, VARCHAR2, NCHAR 또는 NVARCHAR2와 같은 데이터 유형이 될 수 있습니다.
+                        반환되는 문자열은 RAW 데이터 타입입니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT * FROM test ORDER BY NLSSORT(name, 'NLS_SORT = XDanish');</query>
+                        </example>
+                    </examples>
+                    <name>NLSSORT</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>REGEXP_REPLACE(source_str, pattern, replace_str, position,
+                        occurrence, match_parameter) 형식으로 사용합니다.
+                        REPLACE 함수의 기능을 확장하여 문자열에서 정규 표현식 패턴을 검색할 수 있도록 합니다.
+                        기본적으로 함수는 source_string에서 정규 표현식 패턴의 모든 발생을 replace_string으로 대체한 문자열을 반환합니다.
+                        반환되는 문자열은 source_string과 동일한 문자셋을 사용합니다.
+                        첫 번째 인자가 LOB가 아닌 경우 VARCHAR2를 반환하며, 첫 번째 인수가 LOB인 경우 CLOB를 반환합니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT REGEXP_REPLACE(phone_number,
+                                '([[:digit:]]{3})\.([[:digit:]]{3})\.([[:digit:]]{4})', '(\1)
+                                \2-\3') FROM employees;</query>
+                        </example>
+                    </examples>
+                    <name>REGEXP_REPLACE</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>REGEXP_SUBSTR(source_string, pattern, position, occurrence,
+                        match_parameter) 형식으로 사용합니다.
+                        REGEXP_SUBSTR은 SUBSTR 함수의 기능을 확장하여 문자열에서 정규 표현식 패턴을 검색할 수 있도록 합니다.
+                        REGEXP_INSTR과 유사하지만, 부분 문자열의 위치를 반환하는 대신에 부분 문자열 자체를 반환합니다.
+                        이 함수는 매치된 문자열의 내용이 필요하지만 소스 문자열에서의 위치는 필요하지 않을 때 유용합니다.
+                        함수는 source_string과 동일한 문자셋으로 VARCHAR2 또는 CLOB 데이터로 문자열을 반환합니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT REGEXP_SUBSTR('500 Oracle Parkway, Redwood Shores, CA',
+                                ',[^,]+,') FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>REGEXP_SUBSTR</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>NLS_UPPER(str, nplparam) 형식으로 사용합니다.
+                        str의 모든 문자를 대문자로 변환하여 반환합니다.
+                        str와 nlsparam은 CHAR, VARCHAR2, NCHAR, NVARCHAR2, CLOB 또는 NCLOB와 같은 모든 데이터
+                        타입이 될 수 있습니다. 반환되는 문자열은 VARCHAR2 데이터 타입이며, str와 동일한 문자셋을 사용합니다.
+
+                        SELECT NLS_UPPER ('große') FROM DUAL; 쿼리는 GROßE를, SELECT NLS_UPPER ('große',
+                        'NLS_SORT = XGerman') FROM DUAL; 쿼리는 GROSSE를 반환합니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT NLS_UPPER ('große') FROM DUAL;</query>
+                        </example>
+                        <example>
+                            <query>SELECT NLS_UPPER ('große', 'NLS_SORT = XGerman') FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>NLS_UPPER</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>REPLACE(str, search_string, replacement_string) 형식으로 사용합니다.
+                        REPLACE함수는 str에서 search_string의 모든 발생을 replacement_string으로 대체한 결과를 반환합니다.
+                        만약 replacement_string이 생략되거나 null이라면 search_string의 모든 발생이 제거됩니다. 만약
+                        search_string이 null이라면 char이 반환됩니다.
+                        search_string, replacement_string, 그리고 str 모두 CHAR, VARCHAR2, NCHAR,
+                        NVARCHAR2, CLOB 또는 NCLOB와 같은 어떤 데이터 타입이라도 될 수 있습니다. 반환되는 문자열은 str과 동일한 문자셋으로
+                        되어 있습니다. 첫 번째 인자가 LOB가 아닌 경우 VARCHAR2를 반환하며, 첫 번째 인자가 LOB인 경우 CLOB를 반환합니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT REPLACE('JACK and JUE','J','BL') FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>REPLACE</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>RPAD(exp1, n, exp2) 형식으로 사용합니다.
+                        RPAD 함수는 expr1을 expr2로 필요한 만큼 반복하여 길이가 n인 문자열로 오른쪽으로 패딩한 결과를 반환합니다. 이 함수는
+                        쿼리의 출력을 형식화하는 데 유용합니다.
+                        expr1과 expr2는 CHAR, VARCHAR2, NCHAR, NVARCHAR2, CLOB 또는 NCLOB와 같은 어떤 데이터
+                        유형이라도 될 수 있습니다. 반환되는 문자열은 VARCHAR2 데이터 유형이며, expr1과 동일한 문자 집합으로 구성됩니다. 인자 n은
+                        NUMBER 정수 또는 NUMBER 정수로 암시적으로 변환 가능한 값이어야 합니다.
+                        만약 expr2를 지정하지 않으면 기본값으로 공백 하나가 사용됩니다. expr1의 길이가 n보다 긴 경우, 이 함수는 expr1에서 n에
+                        맞는 부분만 반환합니다.
+                        인자 n은 반환 값이 터미널 화면에서 표시되는 전체 길이입니다. 대부분의 문자 집합에서 이는 반환 값의 문자 수와 동일합니다. 그러나
+                        일부 멀티바이트 문자 집합에서는 문자열의 표시 길이가 문자 수와 다를 수 있습니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT last_name, RPAD(' ', salary/1000/1, '*') FROM employees
+                                WHERE department_id = 80 ORDER BY last_name;</query>
+                        </example>
+                    </examples>
+                    <name>RPAD</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>RTRIM(char, set) 형식으로 사용합니다.
+                        RTRIM 함수는 char의 오른쪽 끝에 있는 set에 포함된 모든 문자를 제거합니다. 이 함수는 쿼리의 출력을 형식화하는 데
+                        유용합니다.
+                        만약 set을 지정하지 않으면 기본값으로 공백 하나가 사용됩니다. char이 문자 리터럴인 경우, 해당 문자열을 작은 따옴표로 감싸야
+                        합니다. RTRIM 함수는 LTRIM과 유사하게 동작합니다.
+                        char와 set은 CHAR, VARCHAR2, NCHAR, NVARCHAR2, CLOB 또는 NCLOB와 같은 어떤 데이터 유형이라도
+                        될 수 있습니다. 반환되는 문자열은 VARCHAR2 데이터 유형이며, 문자셋은 char와 동일한 문자셋으로 구성됩니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT RTRIM('BROWNING: ./=./=./=./=./=.=','/=.') "RTRIM example"
+                                FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>RTRIM</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>LPAD(exp1, n, exp2) 형식으로 사용합니다.
+                        LPAD 함수는 지정된 자리수 n으로부터 expr1을 채우고,왼편의 남은 공간에 expr1을 채웁니다. 이 함수는 쿼리의 출력 서식에
+                        대하여 유용합니다.
+                        인수 expr1 과 인수 expr2의 데이터 형식은 CHAR,VARCHAR2,NCHAR,NVARCHAR2,CLOB,NCLOB 입니다.
+                        반환되는 문자열은 VARCHAR2데이터형이고, 인수 expr1과 같은 문자입니다. 인수 n은 숫자 정수 또는 암묵적으로 정수로 변환가능한
+                        값입니다.
+                        만약 expr2를 지정하지 않는다면, 기본값은 공백입니다. 만약 expr1이 n보다 크다면, 이 함수는 n에 적합한 expr1의 일부를
+                        반환합니다.
+                        인자 n은 반환 값이 터미널 화면에 표시될 때의 총 길이입니다. 대부분의 문자 집합에서는 이것이 반환 값의 문자 수와도 같습니다. 그러나
+                        몇몇 다중바이트 문자 집합에서는 문자열의 표시 길이가 문자 수와 다를 수 있습니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT LPAD('Page 1',15,'*.') FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>LPAD</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>SOUNDEX(char) 형식으로 사용합니다.
+                        SOUNDEX 함수는 char의 음성적인 표현을 포함하는 문자열을 반환합니다. 이 함수는 스펠링은 다르지만 영어에서는 비슷한 소리를 내는
+                        단어를 비교할 수 있게 해줍니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT last_name, first_name FROM hr.employees WHERE
+                                SOUNDEX(last_name) = SOUNDEX('SMYTHE');</query>
+                        </example>
+                    </examples>
+                    <name>SOUNDEX</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>SUBSTR(string, position, substring_length) 형식으로 사용합니다.
+                        SUBSTR 함수는 문자열에서 character position부터 substring_length 길이만큼의 부분 문자열을 반환합니다.
+                        SUBSTR 함수는 입력된 문자셋에 따라 문자 기준으로 길이를 계산합니다. SUBSTRB는 문자 대신 바이트를 사용하여 길이를
+                        계산합니다. SUBSTRC는 유니코드 문자셋을 사용합니다. SUBSTR2는 UCS2 코드 포인트를 사용하고, SUBSTR4는 UCS4
+                        코드 포인트를 사용합니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT SUBSTR('ABCDEFG',3,4) FROM DUAL;</query>
+                        </example>
+                        <example>
+                            <query>SELECT SUBSTR('ABCDEFG',-5,4) FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>SUBSTR</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>TRANSLATE(expr, from_string, to_string) 형식으로 사용합니다.
+                        TRANSLATE 함수는 expr의 모든 문자열에서 from_string에 있는 각 문자를 to_string에 해당하는 문자로 대체한
+                        결과를 반환합니다. from_string에 없는 문자는 대체되지 않습니다. expr이 문자열인 경우, 반드시 따옴표로 감싸야 합니다.
+                        from_string은 to_string보다 더 많은 문자를 포함할 수 있습니다. 이 경우, from_string의 끝에 있는 추가
+                        문자는 to_string에 해당하는 문자가 없습니다. 이러한 추가 문자가 char에 나타나면 반환값에서 제거됩니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT TRANSLATE('SQL*Plus User''s Guide', ' */''', '___') FROM
+                                DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>TRANSLATE</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>TREAT(expr AS REF schema.type) 형식으로 사용합니다.
+                        TREAT 함수는 표현식의 선언된 타입을 변경합니다.
+                        이 함수를 사용하려면 타입에 대한 EXECUTE 개체 권한이 있어야 합니다.
+                        타입은 표현식의 선언된 타입의 일부 상위 타입 또는 하위 타입이어야 합니다. 만약 표현식의 가장 구체적인 타입이 타입(또는 타입의 하위
+                        타입)인 경우, TREAT 함수는 표현식을 반환합니다. 표현식의 가장 구체적인 타입이 타입(또는 타입의 하위 타입)이 아닌 경우,
+                        TREAT 함수는 NULL을 반환합니다.
+                        표현식의 선언된 타입이 REF 타입인 경우에만 REF를 지정할 수 있습니다.
+                        표현식의 선언된 타입이 표현식의 소스 타입에 대한 REF인 경우, 타입은 표현식의 소스 타입의 일부 하위 타입 또는 상위 타입이어야
+                        합니다. DEREF(expr)의 가장 구체적인 타입이 타입(또는 타입의 하위 타입)인 경우, TREAT 함수는 표현식을 반환합니다.
+                        DEREF(expr)의 가장 구체적인 타입이 타입(또는 타입의 하위 타입)이 아닌 경우, TREAT 함수는 NULL을 반환합니다.
+                        이 함수는 CLOB 데이터를 직접적으로 지원하지 않습니다. 그러나 CLOB는 암시적 데이터 변환을 통해 인수로 전달할 수 있습니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT name, TREAT(VALUE(p) AS employee_t).salary salary FROM
+                                persons p;</query>
+                        </example>
+                    </examples>
+                    <name>TREAT</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>TRIM(LEADING/TRAILING/BOTH trim_character from arg) 형식으로 사용합니다.
+                        TRIM 함수는 문자열의 앞이나 뒤 (또는 둘 다)에서 문자를 제거하는 기능을 제공합니다. trim_character 또는
+                        trim_source가 문자 리터럴인 경우에는 작은 따옴표로 감싸야 합니다.
+                        LEADING을 지정하면 Oracle Database는 trim_character와 일치하는 앞부분의 문자를 제거합니다.
+                        TRAILING을 지정하면 Oracle은 trim_character와 일치하는 뒷부분의 문자를 제거합니다.
+                        BOTH 또는 세 가지 중 아무 것도 지정하지 않은 경우 Oracle은 trim_character와 일치하는 앞뒤의 문자를 제거합니다.
+                        trim_character를 지정하지 않은 경우 기본값은 공백입니다.
+                        trim_source만 지정한 경우 Oracle은 앞뒤의 공백을 제거합니다.
+                        함수는 VARCHAR2 데이터 유형의 값을 반환합니다. 값의 최대 길이는 trim_source의 길이입니다.
+                        trim_source 또는 trim_character 중 하나가 null인 경우 TRIM 함수는 null을 반환합니다.
+                        trim_character와 trim_source는 모두 CHAR, VARCHAR2, NCHAR, NVARCHAR2, CLOB 또는
+                        NCLOB 데이터 유형일 수 있습니다. 반환된 문자열은 VARCHAR2 데이터 유형이며 trim_source와 동일한 문자셋입니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT employee_id, TO_CHAR(TRIM(LEADING 0 FROM hire_date)) FROM
+                                employees WHERE department_id = 60;</query>
+                        </example>
+                    </examples>
+                    <name>TRIM</name>
+                    <parentId>27</parentId>
+                </children>
+                <children>
+                    <description>UPPER(char) 형식으로 사용합니다.
+                        UPPER 함수는 데이터 타입이 char인 경우, 모든 문자를 대문자로 변환하여 char로 반환합니다. char는 CHAR,
+                        VARCHAR2, NCHAR, NVARCHAR2, CLOB, NCLOB 등의 데이터 타입이 될 수 있습니다. 반환값은 입력된 데이터
+                        타입과 동일한 데이터 타입을 가지게 됩니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT UPPER('Large') FROM DUAL;</query>
+                        </example>
+                    </examples>
+                    <name>UPPER</name>
+                    <parentId>27</parentId>
+                </children>
+                <description>문자를 인자로 받아 문자값을 반환합니다. 반환값의 최대 길이는 데이터 타입에 따라 다릅니다.
+                    길이 한도를 초과할 경우 CHAR나 VARCHAR2 타입은 값을 잘라서 에러없이 반환하고, CLOB 타입은 에러를 발생시키고 값을 반환하지
+                    않습니다.</description>
+                <name>문자를 반환하는 문자 함수(Character Functions Returning Character Values)</name>
+                <parentId>24</parentId>
+            </children>
+            <description>문자 타입의 인자를 받아 데이터를 처리 및 조작하여 문자나 숫자 타입의 값을 반환하는 함수입니다.</description>
+            <name>문자 함수(Character Functions)</name>
+            <parentId>8</parentId>
+        </children>
+        <children>
+            <children>
+                <description>NANVL(m, n) 형식으로 사용합니다.
+                    NANVL 함수는 BINARY_FLOAT 또는 BINARY_DOUBLE 유형의 부동 소수점 숫자에만 유용합니다. 이 함수는 입력 값 m이
+                    NaN(숫자가 아님)인 경우 대체 값 n을 반환하도록 Oracle 데이터베이스에 지시합니다. 만약 m이 NaN이 아닌 경우 Oracle은 m을
+                    반환합니다. 이 함수는 NaN 값을 NULL로 매핑하는 데 유용합니다.
+                    이 함수는 숫자 데이터 유형이거나 숫자 데이터 유형으로 암묵적으로 변환될 수 있는 비숫자 데이터 유형을 인수로 사용합니다. Oracle은 가장
+                    높은 숫자 우선순위를 가진 인수를 결정하고, 나머지 인수를 해당 데이터 타입으로 암묵적으로 변환한 후 해당 데이터 타입을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT * FROM float_point_demo;</query>
+                    </example>
+                </examples>
+                <name>NANVL</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>ROUND(n, integer) 형식으로 사용합니다.
+                    ROUND 함수는 소수점 오른쪽의 정수 위치로 n을 반올림하여 반환합니다. integer를 생략하면 n은 소수점 위치를 기준으로 반올림됩니다.
+                    integer 인수는 소수점 왼쪽의 자릿수를 반올림하기 위해 음수가 될 수 있습니다.
+                    n은 숫자 데이터 타입이거나 숫자 데이터 타입으로 암묵적으로 변환될 수 있는 비숫자 데이터 타입일 수 있습니다. integer 인수는 정수여야
+                    합니다. integer를 생략하면 함수는 인수의 숫자 데이터 타입과 동일한 데이터 타입을 반환합니다. integer를 포함하면 함수는
+                    NUMBER를 반환합니다.
+                    NUMBER 값의 경우, 값 n은 0에서 멀어지도록 반올림됩니다 (예: 양수 x.5의 경우 x+1로 반올림되고 음수 x.5의 경우 x-1로
+                    반올림됩니다). BINARY_FLOAT 및 BINARY_DOUBLE 값의 경우, 함수는 가장 가까운 짝수 값으로 반올림합니다. </description>
+                <examples>
+                    <example>
+                        <query>SELECT ROUND(15.193,1) "Round" FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT ROUND(1.5), ROUND(2.5) FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT ROUND(1.5f), ROUND(2.5f) FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>ROUND(number)</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>SIGN(n) 형식으로 사용합니다.
+                    SIGN 함수는 n의 부호를 반환합니다. 이 함수는 숫자 데이터 타입 또는 NUMBER로 암묵적으로 변환될 수 있는 비숫자 데이터 타입을 인수로
+                    사용하고, NUMBER를 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT SIGN(-15) "Sign" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>SIGN</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>SIN(n) 형식으로 사용합니다.
+                    SIN 함수는 n의 사인값을 반환합니다 (라디안으로 표현된 각도).
+                    이 함수는 숫자 데이터 타입 또는 숫자 데이터 타입으로 암묵적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 사용합니다. 만약 인수가
+                    BINARY_FLOAT인 경우, 함수는 BINARY_DOUBLE을 반환합니다. 그렇지 않은 경우, 함수는 인수와 동일한 숫자 데이터 타입을
+                    반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT SIN(30 * 3.14159265359/180) "Sine of 30 degrees" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>SIN</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>SINH(n) 형식으로 사용합니다.
+                    SINH 함수는 n의 쌍곡사인값을 반환합니다.
+                    이 함수는 숫자 데이터 타입이거나 숫자 데이터 타입으로 암묵적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 사용합니다. 만약 인수가
+                    BINARY_FLOAT인 경우, 함수는 BINARY_DOUBLE을 반환합니다. 그렇지 않은 경우, 함수는 인수와 동일한 숫자 데이터 타입을
+                    반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT SINH(1) "Hyperbolic sine of 1" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>SINH</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>SQRT(n) 형식으로 사용합니다.
+                    SQRT 함수는 n의 제곱근을 반환합니다.
+                    이 함수는 숫자 데이터 타입이거나 숫자 데이터 타입으로 암묵적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 사용합니다. 함수는 인수의 숫자
+                    데이터 타입과 동일한 데이터 타입을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT SQRT(26) "Square root" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>SQRT</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>TAN(n) 형식으로 사용합니다.
+                    TAN 함수는 n의 탄젠트 값을 반환합니다 (각도는 라디안으로 표현됨).
+                    이 함수는 숫자 데이터 타입이거나 숫자 데이터 타입으로 암묵적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 사용합니다. 인수가
+                    BINARY_FLOAT인 경우 함수는 BINARY_DOUBLE을 반환합니다. 그렇지 않으면 함수는 인수와 동일한 숫자 데이터 타입을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TAN(135 * 3.14159265359/180) "Tangent of 135 degrees" FROM
+                            DUAL;</query>
+                    </example>
+                </examples>
+                <name>TAN</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>TANH(n) 형식으로 사용합니다.
+                    TANH 함수는 n의 하이퍼볼릭 탄젠트 값을 반환합니다.
+                    이 함수는 숫자 데이터 타입이거나 숫자 데이터 타입으로 암묵적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 사용합니다. 인수가
+                    BINARY_FLOAT인 경우 함수는 BINARY_DOUBLE을 반환합니다. 그렇지 않으면 함수는 인수와 동일한 숫자 데이터 타입을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TANH(.5) "Hyperbolic tangent of .5" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TANH</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>TRUNC(n, m) 형식으로 사용합니다.
+                    TRUNC 함수는 숫자 n을 m자리까지 절사하여 반환합니다. m이 생략된 경우 n은 소수점 이하 0자리까지 절사됩니다. m은 음수일 수 있어
+                    소수점 왼쪽의 m자리를 절사(0으로 만들기)할 수 있습니다.
+                    이 함수는 숫자 데이터 타입이거나 숫자 데이터 타입으로 암묵적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 사용합니다. m을 생략하면 함수는
+                    인수와 동일한 숫자 데이터 타입을 반환합니다. m을 포함하면 함수는 NUMBER를 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TRUNC(15.79,-1) "Truncate" FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT TRUNC(15.79,1) "Truncate" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TRUNC(number)</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>WIDTH_BUCKET(expr, min_value, max_value, num_buckets) 형식으로 사용합니다.
+                    WIDTH_BUCKET 함수는 동일한 크기를 갖는 구간으로 구성된 동일 너비의 히스토그램, 즉 등간격 히스토그램을 생성하는 데 사용됩니다. (이
+                    함수를 NTILE 함수와 비교하면, NTILE 함수는 동일한 높이를 갖는 히스토그램을 생성합니다.) 이상적으로 각 버킷은 실수 직선의 폐-개
+                    구간입니다. 예를 들어, 버킷은 10.00부터 19.999... 사이의 점수에 할당될 수 있으며, 이는 10이 구간에 포함되고 20은 제외된다는
+                    것을 나타냅니다. 이는 때로 [10, 20)으로 표기됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT customer_id, cust_last_name, credit_limit,
+                            WIDTH_BUCKET(credit_limit, 100, 5000, 10) "Credit Group" FROM customers
+                            WHERE nls_territory = 'SWITZERLAND' ORDER BY "Credit Group";</query>
+                    </example>
+                </examples>
+                <name>WIDTH_BUCKET</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>ABS(n)
+                    ABS 함수는 n의 절대값을 반환합니다.
+                    이 함수는 숫자 데이터 타입이나 숫자 데이터 타입으로 암시적으로 변환 가능한 비숫자 데이터 타입을 인수로 사용합니다. 함수는 인수의 숫자 데이터
+                    타입과 동일한 데이터 타입을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT ABS(-15) "Absolute" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>ABS</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>ACOS(n) 형식으로 사용합니다.
+                    ACOS 함수는 n의 아크 코사인 값을 반환합니다. 인수 n은 -1에서 1 사이의 범위여야 하며, 함수는 라디안 단위로 표현된 값으로 0에서
+                    pi 사이의 범위를 반환합니다.
+                    이 함수는 모든 숫자 타입 데이터나 숫자 타입으로 암묵적으로 변환될 수 있는 비숫자 타입 데이터를 인수로 사용할 수 있습니다. 인수가
+                    BINARY_FLOAT인 경우 함수는 BINARY_DOUBLE을 반환합니다. 그렇지 않은 경우 함수는 인수와 동일한 숫자 타입을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT ACOS(.3)"Arc_Cosine" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>ACOS</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>ATAN2(n, m)
+                    ATAN2 함수는 n과 m의 아크 탄젠트 값을 반환합니다. 인수 n은 범위가 제한되지 않으며, 반환 값은 라디안 단위로 -pi에서 pi 사이의
+                    범위에 위치하며, 이는 n과 m의 부호에 따라 달라집니다. ATAN2(n,m)은 ATAN(n/m)와 동일한 결과를 반환합니다.
+                    이 함수는 모든 숫자 타입 데이터나 숫자 타입으로 암묵적으로 변환될 수 있는 비숫자 타입 데이터를 인수로 사용할 수 있습니다. 만약 인수 중
+                    하나가 BINARY_FLOAT 또는 BINARY_DOUBLE인 경우, 함수는 BINARY_DOUBLE을 반환합니다. 그렇지 않은 경우 함수는
+                    NUMBER를 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT ATAN2(.3, .2) "Arc_Tangent2" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>ATAN2</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>ASIN(n) 형식으로 사용합니다.
+                    ASIN 함수는 n의 아크 사인 값을 반환합니다. 인수 n은 -1에서 1 사이의 범위여야 하며, 함수는 라디안 단위로 표현된 값으로
+                    -pi/2에서 pi/2 사이의 범위를 반환합니다.
+                    이 함수는 모든 숫자 타입 데이터나 숫자 타입으로 암묵적으로 변환될 수 있는 비숫자 타입 데이터를 인수로 사용할 수 있습니다. 인수가
+                    BINARY_FLOAT인 경우 함수는 BINARY_DOUBLE을 반환합니다. 그렇지 않은 경우 함수는 인수와 동일한 숫자 타입을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT ASIN(.3) "Arc_Sine" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>ASIN</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>ATAN(n) 형식으로 사용합니다.
+                    ATAN 함수는 n의 아크 탄젠트 값을 반환합니다. 인수 n은 범위가 제한되지 않으며, 함수는 라디안 단위로 표현된 -pi/2에서 pi/2
+                    사이의 범위의 값을 반환합니다.
+                    이 함수는 모든 숫자 타입 데이터나 숫자 타입으로 암묵적으로 변환될 수 있는 비숫자 타입 데이터를 인수로 사용할 수 있습니다. 인수가
+                    BINARY_FLOAT인 경우 함수는 BINARY_DOUBLE을 반환합니다. 그렇지 않은 경우 함수는 인수와 동일한 숫자 타입을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT ATAN(.3) "Arc_Tangent" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>ATAN</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>CEIL(n)형식으로 사용합니다.
+                    CEIL 함수는 n보다 크거나 같은 가장 작은 정수를 반환합니다.
+                    이 함수는 숫자 데이터 타입이거나 숫자 데이터 타입으로 암묵적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 받습니다. 함수는 인수의 숫자
+                    데이터 타입과 동일한 데이터 타입을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT CEIL(15.7) "Ceiling" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>CEIL</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>BITAND(expr1, expr2) 형식으로 사용합니다.
+                    BITAND 함수는 expr1과 expr2의 비트를 AND 연산하여 정수로 반환합니다. 이 때 expr1과 expr2는 음수가 아닌 정수로
+                    해석될 수 있어야 합니다. 이 함수는 DECODE 함수와 함께 자주 사용되며, 아래 예시에서 설명되어 있습니다.
+                    두 인수 모두 숫자 데이터 타입이거나 NUMBER로 암묵적으로 변환될 수 있는 비숫자 데이터 타입일 수 있습니다. 이 함수는 NUMBER를
+                    반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT order_id, customer_id, DECODE(BITAND(order_status, 1), 1,
+                            'Warehouse', 'PostOffice') Location, DECODE(BITAND(order_status, 2), 2,
+                            'Ground', 'Air') Method, DECODE(BITAND(order_status, 4), 4, 'Insured',
+                            'Certified') Receipt FROM orders WHERE order_status &lt; 8;</query>
+                    </example>
+                </examples>
+                <name>BITAND</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>COS(n)형식으로 사용합니다.
+                    COS 함수는 n(라디안으로 표현된 각도)의 코사인 값을 반환합니다.
+                    이 함수는 숫자 데이터 타입이거나 숫자 데이터 타입으로 암묵적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 받습니다. 만약 인수가
+                    BINARY_FLOAT인 경우, 함수는 BINARY_DOUBLE을 반환합니다. 그렇지 않은 경우 함수는 인수와 동일한 숫자 데이터 타입을
+                    반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT COS(180 * 3.14159265359/180) "Cosine of 180 degrees" FROM
+                            DUAL;</query>
+                    </example>
+                </examples>
+                <name>COS</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>COSH(n) 형식으로 사용합니다.
+                    COSH 함수는 n의 쌍곡 코사인 값을 반환합니다.
+                    이 함수는 숫자 데이터 타입이거나 숫자 데이터 타입으로 암묵적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 받습니다. 인수가
+                    BINARY_FLOAT인 경우 함수는 BINARY_DOUBLE을 반환합니다. 그렇지 않은 경우 함수는 인수와 동일한 숫자 데이터 타입을
+                    반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT COSH(0) "Hyperbolic cosine of 0" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>COSH</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>EXP(n) 형식으로 사용합니다.
+                    EXP 함수는 e (자연 상수)를 n 제곱한 값을 반환합니다. 여기서 e는 약 2.71828183입니다. 이 함수는 인수와 동일한 유형의 값으로
+                    반환됩니다.
+                    이 함수는 숫자 데이터 타입이거나 숫자 데이터 타입으로 암묵적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 받습니다. 인수가
+                    BINARY_FLOAT인 경우 함수는 BINARY_DOUBLE을 반환합니다. 그렇지 않은 경우 함수는 인수와 동일한 숫자 데이터 타입을
+                    반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT EXP(4) "e to the 4th power" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>EXP</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>FLOOR(n) 형식으로 사용합니다.
+                    FLOOR 함수는 n 이하이면서 가장 큰 정수를 반환합니다.
+                    이 함수는 숫자 데이터 타입이거나 숫자 데이터 타입으로 암묵적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 받습니다. 함수는 인수의 숫자
+                    데이터 타입과 동일한 데이터 타입을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT FLOOR(15.7) "Floor" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>FLOOR</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>LN(n) 형식으로 사용합니다.
+                    LN 함수는 n이 0보다 큰 경우에 대해 자연 로그 값을 반환합니다.
+                    이 함수는 숫자 데이터 유형이거나 숫자 데이터 유형으로 암묵적으로 변환될 수 있는 비숫자 데이터 유형을 인수로 사용합니다. 인수가
+                    BINARY_FLOAT인 경우 함수는 BINARY_DOUBLE을 반환합니다. 그렇지 않은 경우 함수는 인수와 동일한 숫자 데이터 유형을
+                    반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT LN(95) "Natural log of 95" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>LN</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>LOG(n, m) 형식으로 사용합니다.
+                    LOG 함수는 n의 밑이 m인 로그 값을 반환합니다. 밑 m은 0 또는 1이 아닌 양의 값이 될 수 있으며, n은 양의 값이 될 수 있습니다.
+                    이 함수는 숫자 데이터 유형이거나 숫자 데이터 유형으로 암묵적으로 변환될 수 있는 비숫자 데이터 유형을 인수로 사용합니다. 인수 중 하나가
+                    BINARY_FLOAT 또는 BINARY_DOUBLE인 경우 함수는 BINARY_DOUBLE을 반환합니다. 그렇지 않은 경우 함수는
+                    NUMBER를 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT LOG(10,100) "Log base 10 of 100" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>LOG</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>MOD(m, n) 형식으로 사용합니다.
+                    MOD 함수는 m을 n으로 나눈 나머지를 반환합니다. n이 0인 경우 m을 반환합니다.
+                    이 함수는 숫자 데이터 유형이거나 숫자 데이터 유형으로 암묵적으로 변환될 수 있는 비숫자 데이터 유형을 인수로 사용합니다. Oracle은 가장
+                    높은 숫자 우선순위를 가진 인수를 결정하고, 나머지 인수를 해당 데이터 타입으로 암묵적으로 변환한 후 해당 데이터 타입을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT MOD(11,4) "Modulus" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>MOD</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>POWER(m, n) 형식으로 사용합니다.
+                    POWER 함수는 m을 n번 곱한 값을 반환합니다. 기저값 m과 지수 n은 어떤 숫자든 될 수 있지만, m이 음수인 경우 n은 정수여야 합니다.
+                    이 함수는 숫자 데이터 유형이거나 숫자 데이터 유형으로 암묵적으로 변환될 수 있는 비숫자 데이터 유형을 인수로 사용합니다. 만약 인수 중 하나가
+                    BINARY_FLOAT 또는 BINARY_DOUBLE인 경우, 함수는 BINARY_DOUBLE을 반환합니다. 그렇지 않으면 NUMBER를
+                    반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT POWER(3,2) "Raised" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>POWER</name>
+                <parentId>25</parentId>
+            </children>
+            <children>
+                <description>REMAINDER(m, n) 형식으로 사용합니다.
+                    REMAINDER 함수는 m을 n으로 나눈 나머지를 반환합니다.
+                    이 함수는 숫자 데이터 유형이거나 숫자 데이터 유형으로 암묵적으로 변환될 수 있는 비숫자 데이터 유형을 인수로 사용합니다. Oracle은 가장
+                    높은 숫자 우선순위를 가진 인수를 결정하고, 나머지 인수를 해당 데이터 타입으로 암묵적으로 변환한 후 해당 데이터 타입을 반환합니다.
+                    MOD 함수는 REMAINDER와 유사하지만, MOD는 FLOOR을 사용하고 REMAINDER는 ROUND를 사용하여 계산합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT bin_float, bin_double, REMAINDER(bin_float, bin_double) FROM
+                            float_point_demo;</query>
+                    </example>
+                </examples>
+                <name>REMAINDER</name>
+                <parentId>25</parentId>
+            </children>
+            <description>숫자 타입을 인자로 받아 숫자 타입을 반환합니다.
+                NUMBER 타입을 반환하는 대부분의 경우 소수점 아래 38자리까지,
+                COS, COSH, EXP, LN, LOG, SIN, SINH, SQRT, TAN, TANH 초월 함수(transcendental
+                functions)들은 소수점 아래 36자리까지,
+                ACOS, ASIN, ATAN, and ATAN2 초월 함수들은 소수점 아래 30자리까지 정확합니다.</description>
+            <name>숫자 함수(Numeric Functions)</name>
+            <parentId>8</parentId>
+        </children>
+        <children>
+            <children>
+                <description>ADD_MONTHS(date, integer) 형식으로 사용합니다.
+                    ADD_MONTHS 함수는 날짜 date에 정수형 월을 더한 결과를 반환합니다. date 인수는 날짜 및 시간 값이거나 DATE로 암시적으로
+                    변환될 수 있는 값이 될 수 있습니다. 정수형 인수는 정수이거나 정수로 암시적으로 변환될 수 있는 값이 될 수 있습니다. 반환 타입은 date의
+                    데이터 타입과 관계없이 항상 DATE입니다. 만약 date가 해당 월의 마지막 날이거나 결과 월이 date의 일 구성 요소보다 적은 날을 가지는
+                    경우, 결과는 결과 월의 마지막 날이 됩니다. 그렇지 않으면 결과는 date와 동일한 일 구성 요소를 가집니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_CHAR(ADD_MONTHS(hire_date,1), 'DD-MON-YYYY') "Next month"
+                            FROM employees WHERE last_name = 'Baer';</query>
+                    </example>
+                </examples>
+                <name>ADD_MONTHS</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>CURRENT_DATE 함수는 세션 시간대에서 현재 날짜를 Gregorian 달력의 DATE 데이터 타입으로 반환합니다.</description>
+                <examples>
+                    <example />
+                </examples>
+                <name>CURRENT_DATE</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>CURRENT_TIMESTAMP(precision) 형식으로 사용합니다.
+                    CURRENT_TIMESTAMP 함수는 세션 시간대에서 현재 날짜와 시간을 TIMESTAMP WITH TIME ZONE 데이터 타입의 값으로
+                    반환합니다. 시간대 오프셋은 SQL 세션의 현재 로컬 시간을 반영합니다. 정밀도를 생략하면 기본값은 6입니다. 이 함수와
+                    LOCALTIMESTAMP 함수의 차이점은 CURRENT_TIMESTAMP가 TIMESTAMP WITH TIME ZONE 값을 반환하는 반면
+                    LOCALTIMESTAMP는 TIMESTAMP 값을 반환한다는 것입니다.
+                    선택적 인수인 정밀도는 반환되는 시간 값의 소수 초 정밀도를 지정합니다.</description>
+                <examples>
+                    <example />
+                </examples>
+                <name>CURRENT_TIMESTAMP</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>DBTIMEZONE 함수는 데이터베이스의 시간대 값을 반환합니다. 반환되는 데이터 타입은 시간대
+                    오프셋('[+|-]TZH:TZM' 형식의 문자열 타입) 또는 시간대 지역 이름입니다. 이는 사용자가 가장 최근의 CREATE DATABASE
+                    또는 ALTER DATABASE 문에서 데이터베이스 시간대 값을 어떻게 지정했는지에 따라 달라집니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT DBTIMEZONE FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>DBTIMEZONE</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>EXTRACT 함수는 datetime 또는 interval 값 표현식에서 지정된 datetime 필드의 값을 추출하여
+                    반환합니다. TIMEZONE_REGION 또는 TIMEZONE_ABBR(약어)를 추출하는 경우, 반환되는 값은 해당 시간대 이름 또는 약어를
+                    포함하는 문자열입니다. 다른 값을 추출하는 경우, 반환되는 값은 그레고리안 달력에 기반한 값입니다. 시간대 값을 포함하는 datetime에서
+                    추출하는 경우, 반환되는 값은 UTC 시간대로 표시됩니다. </description>
+                <examples>
+                    <example>
+                        <query>SELECT last_name, employee_id, hire_date FROM employees WHERE
+                            EXTRACT(YEAR FROM TO_DATE(hire_date, 'DD-MON-RR')) &gt; 1998 ORDER BY
+                            hire_date;</query>
+                    </example>
+                </examples>
+                <name>EXTRACT(datetime)</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>FROM_TZ(timestamp_value, time_zone_value) 형식으로 사용합니다.
+                    FROM_TZ 함수는 타임스탬프 값과 시간대를 TIMESTAMP WITH TIME ZONE 값으로 변환합니다. time_zone_value는
+                    'TZH:TZM' 형식의 문자열이거나 TZR과 선택적인 TZD 형식의 문자열을 반환하는 문자 표현식입니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT FROM_TZ(TIMESTAMP '2000-03-28 08:00:00', '3:00') FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>FROM_TZ</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>LOCALTIMESTAMP(timestamp_precision) 형식으로 사용합니다.
+                    LOCALTIMESTAMP 함수는 세션의 시간대에 따라 현재 날짜와 시간을 TIMESTAMP 데이터 타입으로 반환합니다. 이 함수와
+                    CURRENT_TIMESTAMP 함수의 차이점은 LOCALTIMESTAMP가 TIMESTAMP 값을 반환하는 반면,
+                    CURRENT_TIMESTAMP는 TIMESTAMP WITH TIME ZONE 값을 반환한다는 것입니다.
+                    옵션인 timestamp_precision은 반환되는 시간 값의 소수점 이하 자릿수 정밀도를 지정합니다.</description>
+                <examples>
+                    <example />
+                </examples>
+                <name>LOCALTIMESTAMP</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>MONTHS_BETWEEN(date1, date2) 형식으로 사용합니다.
+                    MONTHS_BETWEEN 함수는 날짜 date1과 date2 사이의 개월 수를 반환합니다. date1이 date2보다 늦은 경우 결과는
+                    양수입니다. date1이 date2보다 이른 경우 결과는 음수입니다. 만약 date1과 date2가 같은 월의 같은 날이거나 둘 다 해당 월의
+                    마지막 날인 경우, 결과는 항상 정수입니다. 그렇지 않은 경우 Oracle Database는 31일을 기준으로 결과의 소수 부분을 계산하며,
+                    date1과 date2의 시간 구성의 차이를 고려합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT MONTHS_BETWEEN (TO_DATE('02-02-1995','MM-DD-YYYY'),
+                            TO_DATE('01-01-1995','MM-DD-YYYY') ) "Months" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>MONTHS_BETWEEN</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>NEW_TIME(date, timezone1, timezone2) 형식으로 사용합니다.
+                    NEW_TIME 함수는 날짜와 시간이 timezone1 시간대에 있을 때, timezone2 시간대에서의 날짜와 시간을 반환합니다. 이 함수를
+                    사용하기 전에 NLS_DATE_FORMAT 매개변수를 설정하여 24시간 형식으로 표시해야 합니다. 반환되는 데이터 타입은 항상 DATE입니다.
+                    date의 데이터 타입과 관계없이 항상 DATE로 반환됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT NEW_TIME(TO_DATE('11-10-99 01:23:45', 'MM-DD-YY
+                            HH24:MI:SS'),'AST', 'PST') "New Date and Time" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>NEW_TIME</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>NEXT_DAY(date, char) 형식으로 사용합니다.
+                    NEXT_DAY 함수는 date 이후에 char로 지정된 첫 번째 평일의 날짜를 반환합니다. 반환되는 데이터 타입은 항상 DATE입니다.
+                    date의 데이터 타입과 관계없이 항상 DATE로 반환됩니다. 매개변수 char는 세션의 날짜 언어에서 요일로 지정된 값이어야 합니다. 요일은
+                    전체 이름 또는 약어로 지정할 수 있으며, 최소한 약어 버전의 문자 수와 일치해야 합니다. 유효한 약어 다음에 바로 오는 문자는 무시됩니다.
+                    반환값은 인수 date와 동일한 시간, 분 및 초 구성 요소를 가지게 됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT NEXT_DAY('02-FEB-2001','TUESDAY') "NEXT DAY" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>NEXT_DAY</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>NUMTODSINTERVAL(n, interval_unit) 형식으로 사용합니다.
+                    NUMTODSINTERVAL 함수는 n을 INTERVAL DAY TO SECOND 리터럴로 변환합니다. 매개변수 n은 NUMBER 값이거나
+                    NUMBER 값으로 암시적으로 변환될 수 있는 표현식일 수 있습니다. 매개변수 interval_unit은 CHAR, VARCHAR2, NCHAR
+                    또는 NVARCHAR2 데이터 타입일 수 있습니다. interval_unit에 대한 값은 n의 단위를 지정하며 다음 문자열 값 중 하나로
+                    해석되어야 합니다:</description>
+                <examples>
+                    <example>
+                        <query>SELECT manager_id, last_name, hire_date, COUNT(*) OVER (PARTITION BY
+                            manager_id ORDER BY hire_date RANGE NUMTODSINTERVAL(100, 'day')
+                            PRECEDING) AS t_count FROM employees;</query>
+                    </example>
+                </examples>
+                <name>NUMTODSINTERVAL</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>NUMTOYMINTERVAL(n, interval_unit) 형식으로 사용합니다.
+                    NUMTOYMINTERVAL 함수는 숫자 n을 INTERVAL YEAR TO MONTH 리터럴로 변환합니다. 매개변수 n은 NUMBER 값이거나
+                    NUMBER 값으로 암시적으로 변환될 수 있는 표현식일 수 있습니다. 매개변수 interval_unit은 CHAR, VARCHAR2, NCHAR
+                    또는 NVARCHAR2 데이터 타입일 수 있습니다. interval_unit에 대한 값은 n의 단위를 지정하며 다음 문자열 값 중 하나로
+                    해석되어야 합니다:</description>
+                <examples>
+                    <example>
+                        <query>SELECT last_name, hire_date, salary, SUM(salary) OVER (ORDER BY
+                            hire_date RANGE NUMTOYMINTERVAL(1,'year') PRECEDING) AS t_sal FROM
+                            employees;</query>
+                    </example>
+                </examples>
+                <name>NUMTOYMINTERVAL</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>SESSIONTIMEZONE 함수는 현재 세션의 시간대를 반환합니다. 반환되는 값은 시간대 오프셋(형식이
+                    '[+|]TZH:TZM'인 문자열 타입) 또는 시간대 지역 이름일 수 있으며, 가장 최근의 ALTER SESSION 문에서 사용자가 세션 시간대
+                    값을 어떻게 지정했는지에 따라 달라집니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT SESSIONTIMEZONE FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>SESSIONTIMEZONE</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>SYS_EXTRACT_UTC(datetime_with_timezone) 형식으로 사용합니다.
+                    SYS_EXTRACT_UTC 함수는 시간대 오프셋이나 시간대 지역 이름을 포함한 datetime 값에서 UTC(협정 세계시, 이전에는 그리니치
+                    평균시)를 추출합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT SYS_EXTRACT_UTC(TIMESTAMP '2000-03-28 11:30:00.00 -08:00')
+                            FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>SYS_EXTRACT_UTC</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>
+                    SYSTIMESTAMP 함수는 데이터베이스가 위치한 시스템의 시스템 날짜와 시간을 반환합니다. 반환되는 값은 TIMESTAMP WITH TIME
+                    ZONE 데이터 타입입니다. 이 함수는 소수 초와 시간대를 포함합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_CHAR(SYSTIMESTAMP, 'SSSSS.FF') FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT SYSTIMESTAMP FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>SYSTIMESTAMP</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>TO_CHAR (datetime/interval, fmt, nlsparam) 형식으로 사용합니다.
+                    TO_CHAR 함수는 DATE, TIMESTAMP, TIMESTAMP WITH TIME ZONE 또는 TIMESTAMP WITH LOCAL
+                    TIME ZONE 데이터 타입의 datetime 또는 interval 값을 지정된 날짜 형식 fmt에 따라 VARCHAR2 데이터 타입의 값으로
+                    변환합니다. 만약 fmt를 생략하면, date는 다음과 같이 VARCHAR2 값으로 변환됩니다.</description>
+                <examples>
+                    <example />
+                </examples>
+                <name>TO_CHAR(datetime)</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>TO_TIMESTAMP_TZ(char, fmt, nlsparam) 형식으로 사용합니다.
+                    선택적인 fmt 매개변수는 char의 형식을 지정합니다. 만약 fmt를 생략하면, char는 TIMESTAMP WITH TIME ZONE 데이터
+                    타입의 기본 형식이어야 합니다. 선택적인 'nlsparam' 인수는 이 함수에서 날짜 변환의 TO_CHAR 함수와 동일한 목적으로 사용됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_TIMESTAMP_TZ('1999-12-01 11:00:00 -8:00', 'YYYY-MM-DD
+                            HH:MI:SS TZH:TZM') FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TO_TIMESTAMP_TZ</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>TO_DSINTERVAL(char, nlsparam) 형식으로 사용합니다.
+                    TO_DSINTERVAL 함수는 CHAR, VARCHAR2, NCHAR 또는 NVARCHAR2 데이터 타입의 문자열을 INTERVAL DAY
+                    TO SECOND 값으로 변환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT employee_id, last_name FROM employees WHERE hire_date +
+                            TO_DSINTERVAL('100 10:00:00') &lt;= DATE '1990-01-01';</query>
+                    </example>
+                </examples>
+                <name>TO_DSINTERVAL</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>TO_YMINTERVAL(char) 형식으로 사용합니다.
+                    TO_YMINTERVAL 함수는 CHAR, VARCHAR2, NCHAR 또는 NVARCHAR2 데이터 타입의 문자열을 INTERVAL YEAR
+                    TO MONTH 타입으로 변환합니다. 여기서 char는 변환할 문자열입니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT hire_date, hire_date + TO_YMINTERVAL('01-02') "14 months" FROM
+                            employees;</query>
+                    </example>
+                </examples>
+                <name>TO_YMINTERVAL</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>TRUNC(date, fmt) 형식으로 사용합니다.
+
+                    TRUNC (date) 함수는 날짜(date)의 시간 부분을 포맷 모델(fmt)로 지정한 단위로 잘라내어 반환합니다. 반환되는 값은 항상
+                    DATE 데이터 타입이며, date에 다른 datetime 데이터 타입을 지정하더라도 그렇습니다. 만약 fmt을 생략하면 date는 가장 가까운
+                    일(day)로 잘립니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TRUNC(TO_DATE('27-OCT-92','DD-MON-YY'), 'YEAR') "New Year"
+                            FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TRUNC(date)</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>TZ_OFFSET(sessiontimezone/dbtimezone) 형식으로 사용합니다.
+                    TZ_OFFSET 함수는 문장이 실행되는 날짜를 기준으로 인수에 해당하는 시간대 오프셋을 반환합니다. 유효한 시간대 이름, UTC로부터의 시간대
+                    오프셋(그 자체로 반환됨), SESSIONTIMEZONE 또는 DBTIMEZONE 키워드를 입력할 수 있습니다. time_zone_name에
+                    대한 유효한 값 목록은 V$TIMEZONE_NAMES 동적 성능 뷰의 TZNAME 열을 쿼리하여 확인할 수 있습니다.</description>
+                <examples>
+                    <example />
+                </examples>
+                <name>TZ_OFFSET</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>ROUND(date, fmt) 형식으로 사용합니다.
+
+                    ROUND 함수는 형식 모델 fmt에 지정된 단위로 반올림된 날짜를 반환합니다. 반환되는 값은 항상 DATE 데이터 타입이며, date에 대해
+                    다른 날짜 및 시간 데이터 타입을 지정한 경우에도 동일합니다. fmt를 생략하면 date가 가장 가까운 날짜로 반올림됩니다. 날짜 표현식은
+                    DATE 값으로 해결되어야 합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT ROUND (TO_DATE ('27-OCT-00'),'YEAR') "New Year" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>ROUND(date)</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>SYSDATE 함수는 데이터베이스가 위치한 운영 체제에 설정된 현재 날짜와 시간을 반환합니다. 반환되는 값의 데이터 타입은
+                    DATE이며, 반환되는 형식은 NLS_DATE_FORMAT 초기화 매개변수의 값에 따라 달라집니다. 이 함수는 인수를 필요로하지 않습니다. 분산
+                    SQL 문에서는 이 함수가 로컬 데이터베이스의 운영 체제에 설정된 날짜와 시간을 반환합니다. 이 함수는 CHECK 제약 조건의 조건으로 사용할
+                    수 없습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_CHAR (SYSDATE, 'MM-DD-YYYY HH24:MI:SS') "NOW" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>SYSDATE</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>TO_TIMESTAMP(char, fmt, nlsparam) 형식으로 사용합니다.
+                    TO_TIMESTAMP 함수는 CHAR, VARCHAR2, NCHAR 또는 NVARCHAR2 데이터 타입의 char를 TIMESTAMP 데이터
+                    타입의 값으로 변환합니다.
+                    옵션인 fmt는 char의 형식을 지정합니다. 만약 fmt를 생략하면, char는 TIMESTAMP 데이터 타입의 기본 형식이어야 합니다. 이는
+                    NLS_TIMESTAMP_FORMAT 초기화 매개변수에 의해 결정됩니다. 선택적인 'nlsparam' 인수는 이 함수에서 날짜 변환의
+                    TO_CHAR 함수와 동일한 목적으로 사용됩니다.
+                    이 함수는 CLOB 데이터를 직접 지원하지 않습니다. 하지만 CLOB는 암묵적인 데이터 변환을 통해 인수로 전달될 수 있습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_TIMESTAMP ('10-Sep-02 14:10:10.123000', 'DD-Mon-RR
+                            HH24:MI:SS.FF') FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TO_TIMESTAMP</name>
+                <parentId>28</parentId>
+            </children>
+            <children>
+                <description>LAST_DAY(date) 형식으로 사용합니다.
+                    LAST_DAY 함수는 date가 포함된 월의 마지막 날짜를 반환합니다. 반환되는 데이터 타입은 항상 DATE이며, date의 데이터 타입과는
+                    관계없습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT SYSDATE,LAST_DAY(SYSDATE) "Last", LAST_DAY(SYSDATE) - SYSDATE
+                            "Days Left" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>LAST_DAY</name>
+                <parentId>28</parentId>
+            </children>
+            <description>날짜 함수들은 DATE, TIMESTAMP, INERVAL 타입을 인자로 받아 동작합니다.
+                오라클 DATE 타입을 위해 설계된 일부 날짜 및 시간 함수로는 ADD_MONTHS, CURRENT_DATE, LAST_DAY, NEW_TIME 및
+                NEXT_DAY가 있고,
+                이 함수들의 인자로 TIMESTAMP 타입을 제공하면 내부적으로 DATE 타입으로 변환하고, DATE 타입을 반환합니다.
+                예외는 NUMBER 타입을 반환하는 MONTHS_BETWEEN 함수와 TIMESTAMP 또는 INTERVAL 값이 전혀 허용되지 않는 ROUND 및
+                TRUNC 함수입니다.</description>
+            <name>날짜 함수(Datetime Functions)</name>
+            <parentId>8</parentId>
+        </children>
+        <children>
+            <children>
+                <description>DECOMPOSE(string, CANONICAL/COMPATIBILITY) 형식으로 사용합니다.
+                    DECOMPOSE 함수는 유니코드 문자에 대해서만 유효합니다. DECOMPOSE 함수는 어떤 데이터 타입의 문자열을 인수로 받아 해당 문자열을
+                    분해한 후 동일한 문자 집합에서의 유니코드 문자열을 반환합니다. 예를 들어, o-umlaut 코드 포인트는 "o" 코드 포인트 뒤에 umlaut
+                    코드 포인트로 반환됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT DECOMPOSE ('Châteaux') FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>DECOMPOSE</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TO_SINGLE_BYTE(char) 형식으로 사용합니다.
+                    TO_SINGLE_BYTE 함수는 char의 모든 멀티바이트 문자를 해당하는 싱글바이트 문자로 변환하여 반환합니다. char은 CHAR,
+                    VARCHAR2, NCHAR 또는 NVARCHAR2 데이터 타입일 수 있으며, 반환되는 값의 데이터 타입은 char과 동일합니다.
+                    char에 있는 어떤 멀티바이트 문자라도 싱글바이트와 대응되지 않는 경우, 출력에서는 멀티바이트 문자로 표시됩니다. 이 함수는 데이터베이스 문자
+                    집합에 싱글바이트와 멀티바이트 문자가 모두 포함되어 있는 경우에 유용합니다.
+                    이 함수는 CLOB 데이터를 직접 지원하지 않습니다. 그러나 CLOB는 암묵적인 데이터 변환을 통해 인수로 전달할 수 있습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_SINGLE_BYTE( CHR(15711393)) FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT TO_SINGLE_BYTE('안녕하세요') FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TO_SINGLE_BYTE</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TRANSLATE(TEXT USING CHAR_CS/NCHAR_CS) 형식으로 사용합니다.
+                    TRANSLATE ... USING은 데이터베이스 문자 집합과 국가 문자 집합 간의 변환을 위해 지정된 문자 집합으로 텍스트를 변환합니다.
+                    TRANSLATE ... USING 구문은 데이터 타입을 직접 지정하는 것이 아니기 때문에 데이터 유형이나 데이터 타입으로 번역할 필요는
+                    없습니다. 이 구문은 문자열의 문자를 지정된 문자 집합으로 변환하는 역할을 합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>UPDATE translate_tab SET char_col = TRANSLATE (nchar_col USING
+                            CHAR_CS);</query>
+                    </example>
+                </examples>
+                <name>TRANSLATE ... USING</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>UNISTR(string) 형식으로 사용합니다.
+                    UNISTR 함수는 텍스트 문자열을 인자로 받아서 국가 문자 집합으로 변환한 결과를 반환합니다. 데이터베이스의 국가 문자 집합은
+                    AL16UTF16 또는 UTF8일 수 있습니다. UNISTR 함수는 유니코드 문자열 리터럴을 지원하여 문자열 내의 문자의 유니코드 인코딩 값을
+                    지정할 수 있습니다. 이는 예를 들어 NCHAR 열에 데이터를 삽입할 때 유용합니다.
+                    유니코드 인코딩 값은 '\xxxx' 형식을 가지며, 'xxxx'는 UCS-2 인코딩 형식에서 문자의 16진수 값입니다. 문자열 자체에 백슬래시를
+                    포함시키려면 백슬래시를 다른 백슬래시로 이스케이프(\) 해야 합니다.
+                    이식성과 데이터 보존을 위해, UNISTR 문자열 인자에서는 ASCII 문자와 유니코드 인코딩 값을 지정하는 것이 좋습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT UNISTR('\0041\0042\0043') FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT UNISTR('abc\00e5\00f1\00f6') FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>UNISTR</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TO_CHAR(n, fmt, nlsparam) 형식으로 사용합니다.
+                    TO_CHAR 함수는 숫자 n을 VARCHAR2 데이터 타입으로 변환합니다. 옵션으로 숫자 형식 fmt을 지정할 수 있습니다. 값 n은
+                    NUMBER, BINARY_FLOAT 또는 BINARY_DOUBLE 유형일 수 있습니다. 만약 fmt를 생략하면, n은 자릿수에 맞게 자동으로
+                    VARCHAR2 값으로 변환됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_CHAR(12345.6789, '99999.9999') AS char_value FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TO_CHAR(number)</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>COMPOSE(char) 형식으로 사용합니다.
+                    COMPOSE 함수는 어떤 데이터 타입의 문자열을 인수로 받고, 입력과 동일한 문자 집합에서 완전히 정규화된 형태의 유니코드 문자열을
+                    반환합니다. char는 CHAR, VARCHAR2, NCHAR, NVARCHAR2, CLOB 또는 NCLOB와 같은 데이터 타입일 수 있습니다.
+                    예를 들어, o 코드 포인트가 어우무트 코드 포인트로 수정된 경우, o-umlaut 코드 포인트로 반환됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT COMPOSE ( 'o' || UNISTR('\0308') ) FROM DUAL; </query>
+                    </example>
+                </examples>
+                <name>COMPOSE</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>ASCIISTR(char) 형식으로 사용합니다.
+                    ASCIISTR 함수는 인수로 어떤 문자 집합의 문자열을 받고 해당 문자열의 ASCII 버전을 반환합니다. 비-ASCII 문자는 \xxxx
+                    형식으로 변환되며, 여기서 xxxx는 UTF-16 코드 유닛을 나타냅니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT ASCIISTR('ABÄCDE') FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>ASCIISTR</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>BIN_TO_NUM(expr) 형식으로 사용합니다.
+                    BIN_TO_NUM 함수는 비트 벡터를 해당하는 숫자로 변환합니다. 이 함수의 각 인수는 비트 벡터에서 하나의 비트를 나타냅니다. 이 함수는
+                    숫자 데이터 유형 또는 NUMBER로 암시적으로 변환할 수 있는 비숫자 데이터 유형을 인수로 받습니다. 각 expr은 0 또는 1로 평가되어야
+                    합니다. 이 함수는 Oracle NUMBER를 반환합니다.
+                    BIN_TO_NUM 함수는 그룹 집합을 사용하여 자주 사용되는 그룹을 선택하는 데이터 웨어하우징 애플리케이션에서 유용하게 사용됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT BIN_TO_NUM(1,0,1,0) FROM DUAL; </query>
+                    </example>
+                </examples>
+                <name>BIN_TO_NUM</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>CAST(expr) / CAST(MULTISET(subquery)) AS typename) 형식으로 사용합니다.
+                    CAST 함수는 내장 데이터 유형 또는 컬렉션 유형의 값을 다른 내장 데이터 유형이나 컬렉션 유형으로 변환합니다.
+                    CAST 함수를 사용하면 하나의 유형을 다른 내장 데이터 유형이나 컬렉션 유형으로 변환할 수 있습니다. 이름 없는 피연산자(예: 날짜 또는 하위
+                    쿼리의 결과 집합)나 명명된 컬렉션(예: varray 또는 중첩 테이블)을 유형 호환성이 있는 데이터 유형이나 명명된 컬렉션으로 변환할 수
+                    있습니다. type_name은 내장 데이터 유형이나 컬렉션 유형의 이름이어야 하며, 피연산자는 내장 데이터 유형이거나 컬렉션 값으로 평가되어야
+                    합니다.
+                    피연산자 expr은 내장 데이터 유형, 컬렉션 유형 또는 AnyData 유형의 인스턴스일 수 있습니다. expr이 AnyData 유형의
+                    인스턴스인 경우, CAST는 AnyData 인스턴스의 값을 추출하려고 하며, 변환 대상 유형과 일치하는 경우 해당 값을 반환하고, 그렇지 않은
+                    경우 null을 반환합니다. MULTISET은 Oracle Database에게 하위 쿼리의 결과 집합을 가져와 컬렉션 값을 반환하도록
+                    지시합니다. 표 7-1은 어떤 내장 데이터 유형을 어떤 다른 내장 데이터 유형으로 캐스팅할 수 있는지 보여줍니다. (CAST는 LONG,
+                    LONG RAW, LOB 데이터 유형 또는 Oracle이 제공하는 유형을 지원하지 않습니다.)</description>
+                <examples>
+                    <example>
+                        <query>SELECT s.custno, s.name, CAST(MULTISET(SELECT ca.street_address,
+                            ca.postal_code, ca.city, ca.state_province, ca.country_id FROM
+                            cust_address ca WHERE s.custno = ca.custno) AS address_book_t) FROM
+                            cust_short s;</query>
+                    </example>
+                    <example>
+                        <query>SELECT CAST(s.addresses AS address_book_t) FROM states s WHERE
+                            s.state_id = 111;</query>
+                    </example>
+                </examples>
+                <name>CAST</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>CHARTOROWID(char) 형식으로 사용합니다.
+                    CHARTOROWID 함수는 CHAR, VARCHAR2, NCHAR, NVARCHAR2 데이터 타입의 값을 ROWID 데이터 타입으로
+                    변환합니다.
+                    이 함수는 CLOB 데이터를 직접적으로 지원하지 않습니다. 그러나 CLOB는 암시적 데이터 변환을 통해 인수로 전달될 수 있습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT last_name FROM employees WHERE ROWID =
+                            CHARTOROWID('AAAFd1AAFAAAABSAA/');</query>
+                    </example>
+                </examples>
+                <name>CHARTOROWID</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>CONVERT(char, dest_char_set, source_char_set) 형식으로 사용합니다.
+                    CONVERT 함수는 문자열을 한 문자셋에서 다른 문자셋으로 변환합니다. 반환되는 값의 데이터 타입은 VARCHAR2입니다.
+                    char 인수는 변환할 값입니다. CHAR, VARCHAR2, NCHAR, NVARCHAR2, CLOB 또는 NCLOB와 같은 모든 데이터
+                    타입이 될 수 있습니다.
+                    dest_char_set 인수는 char이 변환되는 문자셋의 이름입니다.
+                    source_char_set 인수는 데이터베이스에 char이 저장된 문자셋의 이름입니다. 기본값은 데이터베이스 문자셋입니다.
+                    대상 및 출처 문자셋 인수는 리터럴 또는 문자셋 이름을 포함하는 열일 수 있습니다.
+                    문자 변환에서 완전한 대응을 위해서는 대상 문자셋에 출처 문자셋에 정의된 모든 문자의 표현이 포함되어야 합니다. 대상 문자셋에 문자가 존재하지
+                    않을 경우 대체 문자가 나타납니다. 대체 문자는 문자셋 정의의 일부로 정의할 수 있습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT CONVERT('Ä Ê Í Ó Ø A B C D E ', 'US7ASCII', 'WE8ISO8859P1')
+                            FROM DUAL; </query>
+                    </example>
+                </examples>
+                <name>CONVERT</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>HEXTORAW(char) 형식으로 사용합니다.
+                    HEXTORAW 함수는 CHAR, VARCHAR2, NCHAR, 또는 NVARCHAR2 문자 집합에서 16진수 숫자를 포함하는 char를 raw
+                    값으로 변환합니다.
+                    이 함수는 CLOB 데이터를 직접적으로 지원하지 않습니다. 그러나 CLOB는 암묵적인 데이터 변환을 통해 인수로 전달될 수 있습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT HEXTORAW('48656C6C6F20576F726C64') AS result FROM dual;</query>
+                    </example>
+                </examples>
+                <name>HEXTORAW</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>RAWTOHEX(raw) 형식으로 사용합니다.
+                    RAWTOHEX 함수는 raw 값을 해당하는 16진수 값으로 변환하여 문자열 형태로 반환합니다. raw 인수는 RAW 데이터 유형이어야 합니다.
+                    이 함수는 PL/SQL 블록 내에서 호출되는 경우 BLOB 인수를 지정할 수 있습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT RAWTOHEX(raw_column) "Graphics" FROM graphics;</query>
+                    </example>
+                    <example>
+                        <query>SELECT RAWTOHEX('Hello World') AS result FROM dual;</query>
+                    </example>
+                </examples>
+                <name>RAWTOHEX</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>ROWIDTOCHAR(rowid) 형식으로 사용합니다.
+                    ROWIDTOCHAR 함수는 rowid 값을 VARCHAR2 데이터 타입으로 변환합니다. 이 변환의 결과는 항상 18자리입니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT ROWID FROM employees WHERE ROWIDTOCHAR(ROWID) LIKE '%SAAb%';</query>
+                    </example>
+                </examples>
+                <name>ROWIDTOCHAR</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>ROWIDTONCHAR(rowid) 형식으로 사용합니다.
+                    ROWIDTONCHAR 함수는 rowid 값을 NVARCHAR2 데이터 타입으로 변환합니다. 이 변환의 결과는 항상 18자리입니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT LENGTHB( ROWIDTONCHAR(ROWID) ), ROWIDTONCHAR(ROWID) FROM
+                            employees;</query>
+                    </example>
+                </examples>
+                <name>ROWIDTONCHAR</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>SCN_TO_TIMESTAMP(number) 형식으로 사용합니다.
+                    SCN_TO_TIMESTAMP 함수는 SCN(System Change Number)으로 평가되는 숫자를 인수로 받아 해당 SCN과 관련된
+                    대략적인 타임스탬프를 반환합니다. 반환값은 TIMESTAMP 데이터 타입입니다. 이 함수는 언제든지 SCN과 관련된 타임스탬프를 알고 싶을 때
+                    유용하게 사용할 수 있습니다. 예를 들어, ORA_ROWSCN 의사 컬럼과 함께 사용하여 행에 대한 최신 변경 사항에 대한 타임스탬프를 연결하는
+                    데 사용할 수 있습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT SCN_TO_TIMESTAMP(ORA_ROWSCN) FROM employees WHERE employee_id
+                            = 188;</query>
+                    </example>
+                    <example>
+                        <query>SELECT SCN_TO_TIMESTAMP(123456789) AS timestamp FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>SCN_TO_TIMESTAMP</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TIMESTAMP_TO_SCN(timestamp) 형식으로 사용합니다.
+                    TIMESTAMP_TO_SCN 함수는 타임스탬프 값으로 인자를 받아 해당 타임스탬프와 연관된 근사적인 시스템 변경 번호(SCN)를 반환합니다.
+                    반환되는 값의 데이터 타입은 NUMBER입니다. 이 함수는 특정 타임스탬프와 관련된 SCN을 알고자 할 때 유용합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TIMESTAMP_TO_SCN(TO_TIMESTAMP('2023-05-30 10:00:00',
+                            'YYYY-MM-DD HH24:MI:SS')) AS scn FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TIMESTAMP_TO_SCN</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TO_BINARY_DOUBLE(expr, fmt, nlsparam) 형식으로 사용합니다.
+                    TO_BINARY_DOUBLE 함수는 배정밀도 부동 소수점 숫자(double-precision floating-point number)를
+                    반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_BINARY_DOUBLE(3.14) AS binary_double FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TO_BINARY_DOUBLE</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TO_BINARY_FLOAT(expr, fmt, nlsparam) 형식으로 사용합니다.
+                    TO_BINARY_FLOAT 함수는 단정밀도 부동 소수점 숫자(single-precision floating-point number)를
+                    반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_BINARY_FLOAT(1.23) AS binary_float FROM DAUL;</query>
+                    </example>
+                </examples>
+                <name>TO_BINARY_FLOAT</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TO_CHAR(nchar/clob/nclob) 형식으로 사용합니다.
+                    TO_CHAR 함수는 NCHAR, NVARCHAR2, CLOB 또는 NCLOB 데이터를 데이터베이스 문자 집합으로 변환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_CHAR(N'안녕하세요', 'YYYY-MM-DD') AS char_value FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT TO_CHAR('01110') FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TO_CHAR(character)</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TO_CLOB(lob_column/char) 형식으로 사용합니다.
+                    TO_CLOB 함수는 LOB 열이나 다른 문자열 데이터를 NCLOB 값을 CLOB 값으로 변환합니다. char은 CHAR, VARCHAR2,
+                    NCHAR, NVARCHAR2, CLOB 또는 NCLOB와 같은 데이터 타입일 수 있습니다. Oracle Database는 이 함수를 실행할 때
+                    내부적으로 LOB 데이터를 국가 문자 집합에서 데이터베이스 문자 집합으로 변환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_CLOB('Hello, world!') AS clob_value FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TO_CLOB</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TO_DATE(char, fmt, nlsparam) 형식으로 사용합니다.
+                    TO_DATE 함수는 CHAR, VARCHAR2, NCHAR 또는 NVARCHAR2 데이터 유형의 char 값을 DATE 데이터 유형의 값으로
+                    변환합니다. fmt은 char의 형식을 지정하는 날짜 및 시간 모델 형식입니다. 만약 fmt를 생략하면 char은 기본 날짜 형식이어야 합니다.
+                    fmt가 J인 경우 Julian 형식이므로 char은 정수여야 합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_DATE('January 15, 1989, 11:00 A.M.','Month dd, YYYY, HH:MI
+                            A.M.','NLS_DATE_LANGUAGE = American') FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT TO_DATE('2023-05-30', 'YYYY-MM-DD') AS date_value FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TO_DATE</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TO_LOB(long_column) 형식으로 사용합니다.
+                    TO_LOB 함수는 long_column의 LONG 또는 LONG RAW 값을 LOB 값으로 변환합니다. 이 함수는 LONG 또는 LONG
+                    RAW 열에만 적용할 수 있으며, INSERT 문의 하위 쿼리의 SELECT 목록에서만 사용할 수 있습니다.
+                    이 함수를 사용하기 전에, 변환된 LONG 값을 수신할 LOB 열을 생성해야 합니다. LONG 값을 변환하려면 CLOB 열을 생성하십시오.
+                    LONG RAW 값을 변환하려면 BLOB 열을 생성하십시오.
+                    TO_LOB 함수를 사용하여 LONG 열을 LOB 열로 변환하는 것은 CREATE TABLE ... AS SELECT 문의 하위 쿼리에서 인덱스
+                    구성 테이블을 생성하는 경우에는 사용할 수 없습니다. 대신 LONG 열을 포함하지 않고 인덱스 구성 테이블을 생성한 후 INSERT ... AS
+                    SELECT 문에서 TO_LOB 함수를 사용하십시오.</description>
+                <examples>
+                    <example>
+                        <query>INSERT INTO target_table (lob_column) SELECT TO_LOB(long_column) FROM
+                            source_table;</query>
+                    </example>
+                </examples>
+                <name>TO_LOB</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TO_MULTI_BYTE(char) 형식으로 사용합니다.
+                    TO_MULTI_BYTE 함수는 char의 모든 단일바이트 문자를 해당하는 다중바이트 문자로 변환한 char을 반환합니다. char는 CHAR,
+                    VARCHAR2, NCHAR 또는 NVARCHAR2 데이터 유형일 수 있습니다. 반환된 값은 char과 동일한 데이터 유형입니다.
+                    char에 있는 다중바이트 등가물이 없는 단일바이트 문자는 출력 문자열에 단일바이트 문자로 표시됩니다. 이 함수는 데이터베이스 문자 집합이
+                    단일바이트와 다중바이트 문자를 모두 포함하는 경우에만 유용합니다.
+                    이 함수는 CLOB 데이터를 직접 지원하지 않습니다. 그러나 CLOB는 암시적 데이터 변환을 통해 인수로 전달될 수 있습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT dump(TO_MULTI_BYTE( 'A')) FROM DUAL; </query>
+                    </example>
+                    <example>
+                        <query>SELECT TO_MULTI_BYTE('Hello') FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TO_MULTI_BYTE</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TO_NCHAR(char/clob/nclob, fmt, nlsparam) 형식으로 사용합니다.
+                    TO_NCHAR 함수는 데이터베이스 문자 집합에서 국가 문자 집합으로 문자열, CLOB 또는 NCLOB 값을 변환합니다.
+                </description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_NCHAR('Hello') FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TO_NCHAR(character)</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TO_NCHAR(datetime/interval, fmt, nlsparam)형식으로 사용합니다.
+                    TO_NCHAR 함수는 데이터베이스 문자 집합에서 국가 문자 집합으로 DATE, TIMESTAMP, TIMESTAMP WITH TIME
+                    ZONE, TIMESTAMP WITH LOCAL TIME ZONE, INTERVAL MONTH TO YEAR 또는 INTERVAL DAY TO
+                    SECOND 데이터 유형의 날짜/시간 또는 간격 값을 변환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_NCHAR(TIMESTAMP '2023-05-30 10:15:00') FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TO_NCHAR(datetime)</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TO_NCHAR(n, fmt, nlsparam) 형식으로 사용합니다.
+                    TO_NCHAR 함수는 숫자 n을 국가 문자 집합으로 변환하여 문자열로 반환합니다. 값 n은 NUMBER, BINARY_FLOAT 또는
+                    BINARY_DOUBLE 데이터 타입일 수 있습니다. 이 함수는 인자와 동일한 유형의 값을 반환합니다. 선택적인 fmt 및 'nlsparam'은
+                    DATE, TIMESTAMP, TIMESTAMP WITH TIME ZONE, TIMESTAMP WITH LOCAL TIME ZONE,
+                    INTERVAL MONTH TO YEAR 또는 INTERVAL DAY TO SECOND 데이터 타입일 수 있습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_NCHAR(123.45) FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TO_NCHAR(number)</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TO_NCLOB(lob_column/char) 형식으로 사용합니다.
+                    TO_NCLOB 함수는 LOB 열이나 다른 문자열의 CLOB 값을 NCLOB 값으로 변환합니다. char는 CHAR, VARCHAR2,
+                    NCHAR, NVARCHAR2, CLOB 또는 NCLOB 데이터 타입 중 하나일 수 있습니다. Oracle Database는 이 함수를 사용하여
+                    char의 문자 집합을 데이터베이스 문자 집합에서 국가 문자 집합으로 변환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_NCLOB('Hello, World!') FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TO_NCLOB</name>
+                <parentId>29</parentId>
+            </children>
+            <children>
+                <description>TO_NUMBER(expr, fmt, nlsparam) 형식으로 사용합니다.
+                    TO_NUMBER 함수는 expr을 NUMBER 데이터 타입의 값으로 변환합니다. expr은 BINARY_FLOAT 또는
+                    BINARY_DOUBLE 값이거나, 숫자를 포함하는 CHAR, VARCHAR2, NCHAR, NVARCHAR2 데이터 타입의 값일 수 있으며,
+                    선택적인 형식 모델 fmt에 지정된 형식에 맞는 숫자입니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT TO_NUMBER('123.45') FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT TO_NUMBER('-AusDollars100','L9G999D99', '
+                            NLS_NUMERIC_CHARACTERS = '',.''NLS_CURRENCY = ''AusDollars''') "Amount"
+                            FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>TO_NUMBER</name>
+                <parentId>29</parentId>
+            </children>
+            <description>데이터 타입을 다른 타입으로 변환합니다. 함수의 이름은 일반적으로 datatype To datatype 형식입니다.
+                첫 번째 datatype은 입력 데이터의 타입, 두 번째 datatype은 출력 데이터 타입입니다.</description>
+            <name>변환 함수(Conversion Functions)</name>
+            <parentId>8</parentId>
+        </children>
+        <children>
+            <children>
+                <description>DEREF(expr) 형식으로 사용합니다.
+                    DEREF 함수는 인자로 받은 expr의 객체 참조를 반환합니다. expr은 객체에 대한 REF를 반환해야 합니다. 이 함수를 쿼리에서 사용하지
+                    않으면 Oracle 데이터베이스는 REF의 객체 ID를 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT DEREF(ref_column) FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>DEREF</name>
+                <parentId>31</parentId>
+            </children>
+            <children>
+                <description>MAKE_REF(table/view, key) 형식으로 사용합니다.
+                    MAKE_REF 함수는 객체 뷰(object view)의 행이나 객체 테이블(object table)의 행에 대한 REF를 생성합니다. 이 때,
+                    객체 식별자(object identifier)가 기본 키(primary key)에 기반하여 사용됩니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT MAKE_REF(object_table, primary_key_column) FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT MAKE_REF (oc_inventories, 3003) FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>MAKE_REF</name>
+                <parentId>31</parentId>
+            </children>
+            <children>
+                <description>REF(correlation_variable) 형식으로 사용합니다.
+                    REF 함수는 인수로 객체 테이블이나 객체 뷰와 연관된 상관 변수(테이블 별칭)를 사용합니다. 변수나 행에 바인딩된 객체 인스턴스에 대한 REF
+                    값을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT REF(e) FROM addresses e;</query>
+                    </example>
+                </examples>
+                <name>REF</name>
+                <parentId>31</parentId>
+            </children>
+            <children>
+                <description>REFTOHEX(expr) 형식으로 사용합니다.
+                    REFTOHEX 함수는 인수로 전달된 expr을 해당하는 16진수 값으로 변환하여 문자열로 반환합니다. expr은 REF 값을 반환해야 합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT REFTOHEX(ref_column) FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>REFTOHEX</name>
+                <parentId>31</parentId>
+            </children>
+            <children>
+                <description>VALUE(correlation_variable) 형식으로 사용합니다.
+                    VALUE 함수는 인수로 전달된 correlation variable (테이블 별칭)에 연결된 객체 테이블의 행과 관련된 객체 인스턴스를
+                    반환합니다. 객체 인스턴스의 유형은 객체 테이블과 동일한 유형입니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT VALUE(alias) FROM your_table alias;</query>
+                    </example>
+                </examples>
+                <name>VALUE</name>
+                <parentId>31</parentId>
+            </children>
+            <description>객체 참조 함수는 지정된 객체 타입의 객체에 대한 참조인 REF를 조작합니다.</description>
+            <name>객체 참조 함수(Object Reference Functions)</name>
+            <parentId>8</parentId>
+        </children>
+        <children>
+            <children>
+                <description>SYS_TYPEID(object_type_value) 형식으로 사용합니다.
+                    SYS_TYPEID 함수는 피연산자의 가장 구체적인 유형의 typeid를 반환합니다. 이 값은 주로 대체 가능한 열의 유형 구별
+                    열(type-discriminant column)을 식별하는 데 사용됩니다. 예를 들어, SYS_TYPEID가 반환하는 값을 사용하여 유형 구별
+                    열에 인덱스를 생성할 수 있습니다.
+                    이 함수는 객체 유형 피연산자에만 사용할 수 있습니다. 모든 최종 루트 객체 유형은(즉, 유형 계층에 속하지 않는 최종 유형) null
+                    typeid를 가지고 있습니다. Oracle Database는 유형 계층에 속하는 모든 유형에 고유한 non-null typeid를 할당합니다.</description>
+                <examples>
+                    <example>
+                        <query>CREATE INDEX type_discriminant_idx ON table_name
+                            (SYS_TYPEID(type_discriminant_column));</query>
+                    </example>
+                </examples>
+                <name>SYS_TYPEID</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>SYS_XMLAGG(expr, fmt) 형식으로 사용합니다.
+                    SYS_XMLAGG 함수는 expr로 표현된 모든 XML 문서나 조각을 집계하여 단일 XML 문서를 생성합니다. 이 함수는 기본 이름이
+                    "ROWSET"인 새로운 둘러싸는 요소를 추가합니다. XML 문서를 다르게 포맷하려면 XMLFormat 객체의 인스턴스인 fmt을 지정하세요.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT SYS_XMLAGG(expr) AS aggregated_xml FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>SYS_XMLAGG</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>SYS_XMLGEN(expr, fmt) 형식으로 사용합니다.
+                    SYS_XMLGEN 함수는 데이터베이스의 특정 행과 열을 평가하는 표현식을 사용하여 XMLType 유형의 인스턴스를 반환합니다. expr은
+                    스칼라 값, 사용자 정의 유형 또는 XMLType 인스턴스가 될 수 있습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT SYS_XMLGEN(expr) AS generated_xml FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>SYS_XMLGEN</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>UID는 세션 사용자(로그인한 사용자)를 고유하게 식별하는 정수값을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT UID FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>UID</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>UPDATEXML(XMLType_instance, XPath_string, value_expr, namespace_string)
+                    형식으로 사용합니다.
+                    UPDATEXML은 XMLType 인스턴스와 XPath-값 쌍을 인수로 받아 업데이트된 값이 포함된 XMLType 인스턴스를 반환합니다.
+                    XPath_string이 XML 요소인 경우, 해당하는 value_expr은 XMLType 인스턴스여야 합니다. XPath_string이
+                    속성이나 텍스트 노드인 경우, value_expr은 스칼라 데이터 유형이 될 수 있습니다. 각 XPath_string의 대상과 해당하는
+                    value_expr의 데이터 유형이 일치해야 합니다. 선택적인 namespace_string은 VARCHAR2 값을 해석해 기본 매핑 또는
+                    접두사에 대한 네임스페이스 매핑을 지정하며, Oracle Database가 XPath 식을 평가할 때 사용합니다.
+                    XML 요소를 null로 업데이트하면 Oracle은 요소의 속성과 자식을 제거하고 요소 자체가 비어 있게 됩니다. 요소의 텍스트 노드를
+                    null로 업데이트하면 Oracle은 요소의 텍스트 값을 제거하고 요소 자체는 비어 있지만 남아 있습니다.
+                    대부분의 경우, 이 함수는 XML 문서를 메모리에 구성하고 값을 업데이트합니다. 그러나 UPDATEXML은 개체-관계형 열에 대한 UPDATE
+                    문에 최적화되어 함수가 열 자체에서 값을 직접 업데이트합니다.
+                </description>
+                <examples>
+                    <example>
+                        <query>UPDATE your_table SET xml_column = UPDATEXML(xml_column,
+                            '/root/element',
+                            XMLType('&lt;updated_value&gt;new_value&lt;/updated_value&gt;')) WHERE
+                            condition;</query>
+                    </example>
+                </examples>
+                <name>UPDATEXML</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>USER 함수는 세션 사용자(로그인한 사용자)의 이름을 VARCHAR2 데이터 타입으로 반환합니다. Oracle
+                    Database는 이 함수의 값을 공백 패딩된 비교 의미론으로 비교합니다.
+                    분산 SQL 문에서 UID와 USER 함수는 함께 사용하여 로컬 데이터베이스의 사용자를 식별합니다. 이러한 함수는 CHECK 제약 조건의
+                    조건절에서 사용할 수 없습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT USER, UID FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>USER</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>USERENV(parameter) 형식으로 사용합니다.
+                    USERENV 함수는 현재 세션에 대한 정보를 반환합니다. 이 정보는 애플리케이션별 감사 추적 테이블 작성이나 세션에서 현재 사용되는 언어별
+                    문자를 결정하는 데 유용할 수 있습니다. USERENV 함수는 CHECK 제약 조건의 조건절에서 사용할 수 없습니다. Table 7-12는
+                    매개변수 인수에 대한 값들을 설명합니다.
+                    USERENV의 모든 호출은 세션ID, ENTRYID 및 COMMITSCN 매개변수를 제외하고는 VARCHAR2 데이터를 반환합니다. 세션ID,
+                    ENTRYID 및 COMMITSCN 매개변수에 대한 호출은 NUMBER를 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT USERENV('LANGUAGE') "Language" FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>USERENV</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>VSIZE(expr) 형식으로 사용합니다.
+                    VSIZE 함수는 expr의 내부 표현에서의 바이트 수를 반환합니다. 만약 expr이 null이라면 이 함수는 null을 반환합니다.
+                    이 함수는 CLOB 데이터를 직접적으로 지원하지 않습니다. 그러나 CLOB는 암묵적인 데이터 변환을 통해 인수로 전달될 수 있습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT VSIZE('Hello') AS byte_size FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT VSIZE(NULL) AS byte_size FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT VSIZE(CAST(your_clob_column AS VARCHAR2(4000))) AS byte_size
+                            FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>VSIZE</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>XMLAGG(XMLType_instance) 형식으로 사용합니다.
+                    XMLAgg는 집계 함수입니다. XML 단편들의 컬렉션을 가져와 집계된 XML 문서를 반환합니다. 결과에서 null을 반환하는 인수는
+                    제외됩니다.
+                    XMLAgg는 SYS_XMLAgg와 유사하지만, XMLAgg는 노드 컬렉션을 반환하지만 XMLFormat 객체를 사용하여 서식을 지원하지
+                    않습니다. 또한 XMLAgg는 SYS_XMLAgg와 달리 출력을 요소 태그로 묶지 않습니다.
+                    order_by_clause 내에서 Oracle Database는 이 절의 다른 사용법과 달리 숫자 리터럴을 열 위치로 해석하지 않고 단순히
+                    숫자 리터럴로 해석합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT XMLAgg(XMLElement("element", column_name)) AS aggregated_xml
+                            FROM your_table WHERE condition;</query>
+                    </example>
+                </examples>
+                <name>XMLAGG</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>XMLCOLATTVAL(value_expr AS c_alias) 형식으로 사용합니다.
+                    XMLColAttVal 함수는 XML 단편을 생성한 다음 결과 XML을 확장하여 각 XML 단편이 속성 이름과 함께 name 컬럼을 갖도록
+                    합니다. name 속성의 값을 컬럼 이름과 다른 값으로 변경하려면 AS c_alias 절을 사용할 수 있습니다.
+                    value_expr에 대한 값을 지정해야 합니다. 만약 value_expr이 null이라면 요소가 반환되지 않습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT XMLColAttVal(column_name, 'name', column_name) AS expanded_xml
+                            FROM your_table WHERE condition;</query>
+                    </example>
+                </examples>
+                <name>XMLCOLATTVAL</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>XMLCONCAT(XMLType_instance) 형식으로 사용합니다.
+                    XMLConcat 함수는 XMLType 인스턴스들의 시리즈를 입력으로 받아 각 행의 요소들을 연결하고 연결된 시리즈를 반환합니다.
+                    XMLConcat은 XMLSequence의 역입니다.
+                    결과에서 null 표현식은 제외됩니다. 만약 모든 값 표현식이 null이라면 함수는 null을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT XMLConcat(XMLType('&lt;element1&gt;Value1&lt;/element1&gt;'),
+                            XMLType('&lt;element2&gt;Value2&lt;/element2&gt;')) AS
+                            concatenated_series FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT XMLConcat(XMLType('&lt;element1&gt;Value1&lt;/element1&gt;'),
+                            NULL, XMLType('&lt;element2&gt;Value2&lt;/element2&gt;')) AS
+                            concatenated_series FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>XMLCONCAT</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>XMLFOREST(value_expr AS c_alias) 형식으로 사용합니다.
+                    XMLForest 함수는 각 인수 매개변수를 XML로 변환한 후, 이러한 변환된 인수들의 연결인 XML 단편을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT XMLForest(column1, column2, column3) AS xml_fragment FROM
+                            your_table WHERE condition;</query>
+                    </example>
+                </examples>
+                <name>XMLFOREST</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>DECODE(expr, search, result, default) 형식으로 사용합니다.
+                    DECODE 함수는 expr을 각각의 검색 값과 비교합니다. 만약 expr이 검색 값과 같다면, Oracle Database는 해당하는 결과를
+                    반환합니다. 일치하는 값이 없으면 Oracle은 디폴트 값을 반환합니다. 만약 디폴트가 생략되었다면 Oracle은 null을 반환합니다.
+                    인수는 숫자 유형(NUMBER, BINARY_FLOAT 또는 BINARY_DOUBLE) 또는 문자 유형일 수 있습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT DECODE(expr, search1, result1, search2, result2, default) FROM
+                            DUAL;</query>
+                    </example>
+                </examples>
+                <name>DECODE</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>DEPTH(correlation_integer) 형식으로 사용합니다.
+                    DEPTH는 UNDER_PATH 및 EQUALS_PATH 조건과 함께만 사용되는 보조 함수입니다. 이 함수는 동일한 상관 변수로 지정된
+                    UNDER_PATH 조건에 의해 지정된 경로의 레벨 수를 반환합니다.
+                    correlation_integer는 NUMBER 정수일 수 있습니다. 이 보조 함수를 주 조건과 연결하기 위해 사용합니다. 문장에 여러 개의
+                    주 조건이 있는 경우 이를 상관시키는 데 사용됩니다. 1보다 작은 값은 1로 처리됩니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT DEPTH(correlation_integer) FROM DUAL UNDER_PATH('path') WITHIN
+                            PATH;</query>
+                    </example>
+                </examples>
+                <name>DEPTH</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>DUMP(expr, return_fmt, start_position, length) 형식으로 사용합니다.
+                    DUMP 함수는 expr의 데이터 유형 코드, 바이트 단위의 길이, 그리고 내부 표현을 포함하는 VARCHAR2 값을 반환합니다. 반환된 결과는
+                    항상 데이터베이스 문자 집합으로 표시됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT DUMP('abc', 1016) FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT DUMP(expr) FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>DUMP</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>EMPTY_BLOB와 EMPTY_CLOB은 LOB 변수를 초기화하거나 INSERT 또는 UPDATE 문에서 LOB 열 또는
+                    속성을 EMPTY로 초기화하는 데 사용할 수 있는 빈 LOB 로케이터를 반환합니다. EMPTY는 LOB이 초기화되었지만 데이터로 채워지지 않은
+                    상태를 의미합니다. 접근하고 데이터를 채우기 전에 개체 유형의 일부인 LOB 속성을 초기화해야 합니다.
+</description>
+                <examples>
+                    <example />
+                </examples>
+                <name>EMPTY_BLOB, EMPTY_CLOB</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>EXISTSNODE(XMLType_instance, XPath_string, namespace_string) 형식으로
+                    사용합니다.
+                    EXISTSNODE 함수는 지정된 경로를 사용하여 XML 문서를 탐색할 때 결과적으로 노드가 있는지 여부를 결정합니다. 인수로는 XML 문서가
+                    포함된 XMLType 인스턴스와 경로를 지정하는 VARCHAR2 XPath 문자열이 필요합니다. 선택적으로 사용하는
+                    namespace_string은 Oracle Database가 XPath 식을 평가할 때 접두사에 대한 기본 매핑 또는 네임스페이스 매핑을
+                    지정하는 VARCHAR2 값을 해결해야 합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT EXISTSNODE(xml_instance, 'xpath_string', 'namespace_string')
+                            FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>EXISTSNODE</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>EXTRACT(XMLType_instance, XPath_string, namespace_string) 형식으로 사용합니다.
+                    EXTRACT (XML) 함수는 EXISTSNODE 함수와 유사합니다. VARCHAR2 XPath 문자열을 적용하고 XML 단편을 포함하는
+                    XMLType 인스턴스를 반환합니다. 선택적으로 사용하는 namespace_string은 Oracle Database가 XPath 식을 평가할
+                    때 접두사에 대한 기본 매핑 또는 네임스페이스 매핑을 지정하는 VARCHAR2 값을 해결해야 합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT EXTRACT(xml_instance, 'xpath_string', 'namespace_string') FROM
+                            DUAL;</query>
+                    </example>
+                </examples>
+                <name>EXTRACT(XML)</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>EXTRACTVALUE(XMLType_instance, XPath_string, namespace_string) 형식으로
+                    사용합니다.
+                    EXTRACTVALUE 함수는 XMLType 인스턴스와 XPath 식을 인수로 받아 결과 노드의 스칼라 값을 반환합니다. 결과는 단일 노드이어야
+                    하며 텍스트 노드, 속성 또는 요소일 수 있습니다. 결과가 요소인 경우, 해당 요소는 자식으로 단일 텍스트 노드를 가져야 하며, 이 값이 함수가
+                    반환하는 값입니다. 지정된 XPath가 하나 이상의 자식을 가진 노드를 가리키거나 가리키는 노드가 텍스트가 아닌 노드 자식을 가지고 있는 경우,
+                    Oracle은 오류를 반환합니다. 선택적으로 사용하는 namespace_string은 XPath 식을 평가할 때 접두사에 대한 기본 매핑 또는
+                    네임스페이스 매핑을 지정하는 VARCHAR2 값을 해결해야 합니다.
+                    XML 스키마를 기반으로 한 문서의 경우, Oracle이 반환 값의 유형을 추론할 수 있는 경우, 해당 유형에 적합한 스칼라 값이 반환됩니다.
+                    그렇지 않으면 결과는 VARCHAR2 유형입니다. XML 스키마를 기반으로하지 않는 문서의 경우, 반환 유형은 항상 VARCHAR2입니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT EXTRACTVALUE(xml_instance, 'xpath_expression',
+                            'namespace_string') FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>EXTRACTVALUE</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>GREATEST(expr) 형식으로 사용합니다.
+                    GREATEST 함수는 하나 이상의 표현식 중 가장 큰 값을 반환합니다. Oracle Database는 반환 유형을 결정하기 위해 첫 번째
+                    표현식을 사용합니다. 첫 번째 표현식이 숫자인 경우, Oracle은 가장 높은 숫자 우선 순위를 가진 인수를 결정하고, 비교 전에 나머지 인수를
+                    해당 데이터 유형으로 암시적으로 변환한 후 해당 데이터 유형을 반환합니다. 첫 번째 표현식이 숫자가 아닌 경우, 첫 번째 이후의 각 표현식은
+                    비교 전에 첫 번째 표현식의 데이터 유형으로 암시적으로 변환됩니다.
+                    Oracle Database는 각 표현식을 패딩되지 않은 비교 의미론을 사용하여 비교합니다. 문자 비교는 데이터베이스 문자 집합의 문자 값에
+                    기반합니다. 한 문자는 다른 문자보다 높은 문자 집합 값이 있다면 더 큽니다. 이 함수가 반환하는 값이 문자 데이터인 경우, 데이터 유형은 항상
+                    VARCHAR2입니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT GREATEST ('HARRY', 'HARRIOT', 'HAROLD') "Greatest" FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT GREATEST(expr1, expr2, ...) FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>GREATEST</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>LEAST(expr) 형식으로 사용합니다.
+                    LEAST 함수는 exprs의 목록 중 가장 작은 값을 반환합니다. 첫 번째 expr 이후의 모든 expr은 비교 전에 첫 번째 expr의
+                    데이터 유형으로 암시적으로 변환됩니다. Oracle Database는 expr을 패딩되지 않은 비교 의미론을 사용하여 비교합니다. 이 함수가
+                    반환하는 값이 문자 데이터인 경우, 데이터 유형은 항상 VARCHAR2입니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT LEAST('HARRY','HARRIOT','HAROLD') "LEAST" FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT LEAST(expr1, expr2, ...) FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>LEAST</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>LNNVL(condition) 형식으로 사용합니다.
+                    LNNVL 함수는 조건식의 한 쪽 또는 양쪽 피연산자 중 하나 이상이 null일 수 있는 상황에서 조건을 평가하는 간결한 방법을 제공합니다. 이
+                    함수는 쿼리의 WHERE 절에서만 사용할 수 있습니다. 인수로 조건식을 받고, 조건이 FALSE 또는 UNKNOWN일 경우 TRUE를 반환하고,
+                    조건이 TRUE인 경우 FALSE를 반환합니다. LNNVL은 스칼라 표현식이 사용될 수 있는 모든 위치에서 사용할 수 있으며, IS [NOT]
+                    NULL, AND, 또는 OR 조건이 유효하지 않은 경우에도 null 가능성을 처리해야 할 필요가 있는 문맥에서 사용될 수 있습니다.
+                    Oracle Database는 가끔 LNNVL 함수를 내부적으로 사용하여 NOT IN 조건을 NOT EXISTS 조건으로 다시 작성합니다.
+                    이러한 경우에는 EXPLAIN PLAN의 출력에서 이 작업이 계획 테이블 출력에 나타납니다. 조건은 스칼라 값이 평가될 수 있지만 AND,
+                    OR, 또는 BETWEEN을 포함하는 복합 조건은 될 수 없습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT * FROM DUAL WHERE LNNVL(condition);</query>
+                    </example>
+                    <example>
+                        <query>SELECT COUNT(*) FROM employees WHERE LNNVL(commission_pct &gt;= .2);</query>
+                    </example>
+                </examples>
+                <name>LNNVL</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>LNNVL(condition) 형식으로 사용합니다.
+                    LNNVL 함수는 조건식의 한 쪽 또는 양쪽 피연산자 중 하나 이상이 null일 수 있는 상황에서 조건을 평가하는 간결한 방법을 제공합니다. 이
+                    함수는 쿼리의 WHERE 절에서만 사용할 수 있습니다. 인수로 조건식을 받고, 조건이 FALSE 또는 UNKNOWN일 경우 TRUE를 반환하고,
+                    조건이 TRUE인 경우 FALSE를 반환합니다. LNNVL은 스칼라 표현식이 사용될 수 있는 모든 위치에서 사용할 수 있으며, IS [NOT]
+                    NULL, AND, 또는 OR 조건이 유효하지 않은 경우에도 null 가능성을 처리해야 할 필요가 있는 문맥에서 사용될 수 있습니다.
+                    Oracle Database는 가끔 LNNVL 함수를 내부적으로 사용하여 NOT IN 조건을 NOT EXISTS 조건으로 다시 작성합니다.
+                    이러한 경우에는 EXPLAIN PLAN의 출력에서 이 작업이 계획 테이블 출력에 나타납니다. 조건은 스칼라 값이 평가될 수 있지만 AND,
+                    OR, 또는 BETWEEN을 포함하는 복합 조건은 될 수 없습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT * FROM DUAL WHERE LNNVL(condition);</query>
+                    </example>
+                    <example>
+                        <query>SELECT COUNT(*) FROM employees WHERE LNNVL(commission_pct &gt;= .2);</query>
+                    </example>
+                </examples>
+                <name>NLS_CHARSET_DECL_LEN</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>NLS_CHARSET_NAME(number) 형식으로 사용합니다.
+                    NLS_CHARSET_NAME 함수는 ID 번호에 해당하는 문자 집합의 이름을 반환합니다. 문자 집합 이름은 데이터베이스 문자 집합의
+                    VARCHAR2 값으로 반환됩니다.
+                    만약 number가 유효한 문자 집합 ID로 인식되지 않는 경우, 이 함수는 null을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT NLS_CHARSET_NAME(2) FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>NLS_CHARSET_NAME</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>NULLIF(expr1, expr2) 형식으로 사용합니다.
+                    NULLIF 함수는 expr1과 expr2를 비교합니다. 두 값이 동일하면 함수는 null을 반환합니다. 두 값이 동일하지 않으면 함수는
+                    expr1을 반환합니다. expr1에는 리터럴 NULL을 지정할 수 없습니다.
+                    만약 두 인수가 숫자 데이터 유형이라면, Oracle Database는 숫자 우선순위가 더 높은 인수를 결정하고, 다른 인수를 해당 데이터
+                    유형으로 암시적으로 변환한 후 그 데이터 유형을 반환합니다. 인수가 숫자가 아닌 경우, 동일한 데이터 유형이어야 하며, 그렇지 않으면
+                    Oracle은 오류를 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT NULLIF(expr1, expr2) FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>NULLIF</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>NVL(expr1, expr2) 형식으로 사용합니다.
+                    NVL 함수는 쿼리 결과에서 null(공백으로 반환)을 지정한 문자열로 대체하는 데 사용됩니다. 만약 expr1이 null이라면, NVL은
+                    expr2를 반환합니다. expr1이 null이 아니라면, NVL은 expr1을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT NVL(expr1, expr2) FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>NVL</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>NVL2(expr1, expr2, expr3) 형식으로 사용합니다.
+                    NVL2 함수는 지정한 표현식이 null인지 아닌지에 따라 쿼리에서 반환되는 값을 결정하는 데 사용됩니다. expr1이 null이 아니라면,
+                    NVL2는 expr2를 반환합니다. expr1이 null이라면, NVL2는 expr3을 반환합니다.
+                    인수 expr1은 어떤 데이터 타입이든 사용할 수 있습니다. 인수 expr2와 expr3은 LONG을 제외한 어떤 데이터 타입이든 사용할 수
+                    있습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT NVL2(expr1, expr2, expr3) FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>NVL2</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>ORA_HASH(expr, max_bucket, seed_value) 형식으로 사용합니다.
+                    ORA_HASH는 주어진 표현식에 대한 해시 값을 계산하는 함수입니다. 이 함수는 데이터의 일부를 분석하거나 무작위 샘플을 생성하는 등의 작업에
+                    유용합니다.
+                    expr 인수는 Oracle Database가 해시 값을 계산하기를 원하는 데이터를 지정합니다. expr에 의해 표시되는 데이터의 유형 또는
+                    길이에는 제한이 없으며, 일반적으로 열 이름으로 해석됩니다.
+                    옵션인 max_bucket 인수는 해시 함수가 반환하는 최대 버킷 값입니다. 0부터 4294967295 사이의 값을 지정할 수 있습니다.
+                    기본값은 4294967295입니다.
+                    옵션인 seed_value 인수는 Oracle이 동일한 데이터 집합에 대해 많은 다른 결과를 생성할 수 있도록 합니다. Oracle은 expr과
+                    seed_value의 조합에 대해 해시 함수를 적용합니다. 0부터 4294967295 사이의 값을 지정할 수 있습니다. 기본값은 0입니다.
+                    이 함수는 NUMBER 값으로 반환됩니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT ORA_HASH(expr, max_bucket, seed_value) FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>ORA_HASH</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>PATH(correlation_integer) 형식으로 사용합니다.
+                    PATH는 UNDER_PATH 및 EQUALS_PATH 조건과 함께 사용되는 보조 함수입니다. 이 함수는 상위 조건에서 지정된 리소스로 이어지는
+                    상대 경로를 반환합니다.
+                    correlation_integer은 NUMBER 정수로 사용할 수 있으며 이 보조 함수를 기본 조건과 연관시키는 데 사용됩니다. 1보다 작은
+                    값은 1로 처리됩니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT PATH(1) FROM dual;</query>
+                    </example>
+                </examples>
+                <name>PATH</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>SYS_CONNECT_BY_PATH(column, char) 형식으로 사용합니다.
+                    SYS_CONNECT_BY_PATH는 계층적 쿼리에서만 유효한 함수입니다. 이 함수는 CONNECT BY 조건에 따라 반환된 각 행의 열 값을
+                    루트부터 노드까지의 경로로 반환하며, 열 값은 char로 구분됩니다.
+                    열과 char는 CHAR, VARCHAR2, NCHAR 또는 NVARCHAR2와 같은 데이터 유형 중 하나일 수 있습니다. 반환되는 문자열은
+                    VARCHAR2 데이터 유형이며 열과 동일한 문자 집합을 가지고 있습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT SYS_CONNECT_BY_PATH(column, '/') AS path FROM table START WITH
+                            parent_column IS NULL CONNECT BY PRIOR column = parent_column;</query>
+                    </example>
+                </examples>
+                <name>SYS_CONNECT_BY_PATH</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>SYS_CONTEXT(namespace, parameter, length) 형식으로 사용합니다.
+                    SYS_CONTEXT 함수는 컨텍스트 네임스페이스와 관련된 매개변수의 값을 반환합니다. 이 함수는 SQL 및 PL/SQL 문에서 모두 사용할 수
+                    있습니다.
+                    namespace와 parameter에는 문자열을 지정하거나 네임스페이스 또는 속성을 나타내는 문자열로 해석되는 식을 지정할 수 있습니다.
+                    컨텍스트 네임스페이스는 이미 생성되어 있어야 하며, 연관된 매개변수와 해당 값은 DBMS_SESSION.set_context 프로시저를 사용하여
+                    설정되어 있어야 합니다. 네임스페이스는 유효한 SQL 식별자여야 합니다. 매개변수 이름은 임의의 문자열일 수 있습니다. 대소문자를 구분하지
+                    않지만 길이가 30바이트를 초과할 수 없습니다.
+                    반환 값의 데이터 유형은 VARCHAR2입니다. 반환 값의 기본 최대 크기는 256바이트입니다. 선택적인 length 매개변수를 지정하여 이
+                    기본값을 재정의할 수 있습니다. length 매개변수는 NUMBER이거나 NUMBER로 암묵적으로 변환될 수 있는 값이어야 합니다. 유효한 값의
+                    범위는 1에서 4000바이트까지입니다. 잘못된 값을 지정하면 Oracle Database가 무시하고 기본값을 사용합니다.
+                    Oracle은 현재 세션을 설명하는 내장 네임스페이스인 USERENV를 제공합니다. USERENV 네임스페이스의 미리 정의된 매개변수는 테이블
+                    7-11에 나열되어 있으며, 반환 문자열의 길이도 함께 제공됩니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT SYS_CONTEXT ('USERENV', 'SESSION_USER') FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT SYS_CONTEXT ('hr_apps', 'group_no') "User Group" FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT SYS_CONTEXT('USERENV', 'SESSIONID') AS session_id FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>SYS_CONTEXT</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>BFILENAME(directory, filename) 형식으로 사용합니다.
+                    BFILENAME는 서버 파일 시스템에 있는 실제 LOB 이진 파일과 연결된 BFILE 로케이터를 반환합니다.
+                    'directory'는 실제 파일이 위치한 서버 파일 시스템의 전체 경로 이름에 대한 별칭으로 사용되는 데이터베이스 개체입니다.
+                    'filename'은 서버 파일 시스템에서의 파일 이름입니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT BFILENAME('directory', 'filename') FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>BFILENAME</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>COALESCE(expr) 형식으로 사용합니다.
+                    COALESCE는 표현식 목록에서 첫 번째로 null이 아닌 expr을 반환합니다. 적어도 하나의 expr은 리터럴 NULL이 아니어야 합니다.
+                    모든 expr이 null로 평가되면 함수는 null을 반환합니다.
+                    만약 모든 expr이 숫자 데이터 유형이거나 숫자 데이터 유형으로 암묵적으로 변환될 수 있는 비숫자 데이터 유형이라면, Oracle
+                    Database는 가장 높은 숫자 우선순위를 가진 인수를 결정하고, 나머지 인수를 해당 데이터 유형으로 암묵적으로 변환한 후 그 데이터 유형을
+                    반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT COALESCE(expr1, expr2, expr3) FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>COALESCE</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>NLS_CHARSET_ID(text) 형식으로 사용합니다.
+                    NLS_CHARSET_ID 함수는 문자 집합 이름에 해당하는 문자 집합 ID 번호를 반환합니다. text 인수는 런타임 VARCHAR2
+                    값입니다. text 값이 'CHAR_CS'인 경우 서버의 데이터베이스 문자 집합 ID 번호를 반환합니다. text 값이 'NCHAR_CS'인
+                    경우 서버의 나라별 문자 집합 ID 번호를 반환합니다.
+                    유효하지 않은 문자 집합 이름은 null을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT NLS_CHARSET_ID('ja16euc') FROM DUAL;</query>
+                    </example>
+                    <example>
+                        <query>SELECT NLS_CHARSET_ID(text) FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>NLS_CHARSET_ID</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>SYS_DBURIGEN(column/attribute, rowid, text) 형식으로 사용합니다.
+                    SYS_DBURIGEN 함수는 하나 이상의 열 또는 속성과 선택적으로 rowid를 인수로 받아 특정 열 또는 행 개체에 대한 DBURIType
+                    데이터 유형의 URL을 생성합니다. 그런 다음 해당 URL을 사용하여 데이터베이스에서 XML 문서를 검색할 수 있습니다.
+                    참조하는 모든 열 또는 속성은 동일한 테이블에 있어야 합니다. 이들은 기본 키의 역할을 수행해야 합니다. 즉, 실제로 테이블의 기본 키와 일치할
+                    필요는 없지만 고유한 값을 참조해야 합니다. 여러 열을 지정하는 경우, 마지막 열을 제외한 모든 열이 데이터베이스에서 행을 식별하고, 마지막으로
+                    지정한 열이 행 내의 열을 식별합니다.
+                    기본적으로 URL은 서식이 있는 XML 문서를 가리킵니다. 문서의 텍스트만 가리키도록 URL을 지정하려면 선택적으로 'text()'를
+                    지정하십시오. (이 XML 컨텍스트에서 소문자 text는 구문적인 플레이스홀더가 아닌 키워드입니다.)
+                    열 또는 속성을 포함하는 테이블 또는 뷰에 쿼리의 컨텍스트에서 스키마가 지정되지 않은 경우, Oracle Database는 테이블 또는 뷰
+                    이름을 공용 동의어로 해석합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT SYS_DBURIGEN(column1, column2) AS url FROM table_name;</query>
+                    </example>
+                </examples>
+                <name>SYS_DBURIGEN</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>SYS_GUID 함수는 16바이트로 구성된 전역 고유 식별자(RAW 값)를 생성하고 반환합니다. 대부분의 플랫폼에서 생성된
+                    식별자는 호스트 식별자, 함수를 호출한 프로세스 또는 스레드의 프로세스 또는 스레드 식별자, 해당 프로세스 또는 스레드에 대한 반복되지 않는
+                    값(바이트 시퀀스)으로 구성됩니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT SYS_GUID() AS unique_id FROM DUAL;</query>
+                    </example>
+                </examples>
+                <name>SYS_GUID</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>XMLSEQUENCE(XMLType_instance/sys_refcursor_instance, fmt) 형식으로 사용합니다.
+                    XMLSequence 함수에는 두 가지 형태가 있습니다.
+                    첫 번째 형태는 XMLType 인스턴스를 입력으로 받고, 해당 XMLType의 최상위 노드를 가진 varray를 반환합니다.
+                    두 번째 형태는 REFCURSOR 인스턴스와 선택적으로 XMLFormat 객체의 인스턴스를 입력으로 받고, 커서의 각 행에 대해
+                    XMLSequence 타입의 XML 문서를 반환합니다.
+                    XMLSequence는 XMLType의 컬렉션을 반환하기 때문에, 이 함수를 TABLE 절에서 사용하여 컬렉션 값을 여러 행으로 펼칠 수
+                    있으며, 이후 SQL 쿼리에서 추가로 처리할 수 있습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT column_value FROM
+                            TABLE(XMLSequence(XMLType('&lt;root&gt;&lt;element1&gt;Value1&lt;/element1&gt;&lt;element2&gt;Value2&lt;/element2&gt;&lt;/root&gt;')))
+                            x</query>
+                    </example>
+                </examples>
+                <name>XMLSEQUENCE</name>
+                <parentId>36</parentId>
+            </children>
+            <children>
+                <description>XMLTRANSFORM(XMLType_instance, XMLType_instance) 형식으로 사용합니다.
+                    XMLTransform 함수는 XMLType 인스턴스와 XSL 스타일 시트(XMLType 인스턴스의 형태)를 인수로 받습니다. 이 함수는 스타일
+                    시트를 인스턴스에 적용하고 XMLType을 반환합니다.
+                    이 함수는 데이터베이스에서 데이터를 검색하는 동안 스타일 시트에 따라 데이터를 구성하는 데 유용합니다.</description>
+                <examples>
+                    <example />
+                </examples>
+                <name>XMLTRANSFORM</name>
+                <parentId>36</parentId>
+            </children>
+            <description>다른 단일행 함수들의 범주에 속하지 않는 함수들입니다.</description>
+            <name>기타 단일행 함수(Miscellaneous Single-Row Functions)</name>
+            <parentId>8</parentId>
+        </children>
+        <children>
+            <children>
+                <description>CV(dimension_column) 형식으로 사용합니다.
+                    CV 함수는 인터로우 계산에만 관련이 있습니다. 이 함수는 SELECT 문의 model_clause에서만 사용할 수 있으며, 오직 모델 규칙의
+                    오른쪽에 위치한 경우에만 사용할 수 있습니다. CV 함수는 모델 규칙의 왼쪽에서 오른쪽으로 전달된 차원 열의 현재 값을 반환합니다. 이 함수는
+                    model_clause에서 차원 열에 대한 상대적인 인덱싱을 제공하기 위해 사용됩니다. 반환되는 데이터 타입은 차원 열의 데이터 타입과
+                    동일합니다. 인수를 생략하면 함수가 셀 참조 내에서의 상대적인 위치에 연결된 차원 열을 기본값으로 사용합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT CV(dimension_column) FROM your_table MODEL RETURN UPDATED ROWS
+                            DIMENSION BY (dimension_column) MEASURES (measure_column) RULES UPSERT
+                            SEQUENTIAL ORDER (measure_column[ANY] = CV(dimension_column) + 1);</query>
+                    </example>
+                </examples>
+                <name>CV</name>
+                <parentId>35</parentId>
+            </children>
+            <children>
+                <description>PRESENTNNV(cell_reference, expr1, expr2) 형식으로 사용합니다.
+                    PRESENTNNV 함수는 인터로우 계산에만 관련이 있습니다. 이 함수는 SELECT 문의 model_clause에서만 사용할 수 있으며,
+                    model_rules_clause의 오른쪽에만 사용할 수 있습니다. 이 함수는 model_clause의 실행 이전에 cell_reference가
+                    존재하고 null이 아닌 경우 expr1을 반환합니다. 그렇지 않으면 expr2를 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT PRESENTNNV(cell_reference, expr1, expr2) FROM your_table MODEL
+                            RETURN UPDATED ROWS DIMENSION BY (dimension_column) MEASURES
+                            (measure_column) RULES (measure_column[ANY] = PRESENTNNV(cell_reference,
+                            1, 0));</query>
+                    </example>
+                </examples>
+                <name>ITERATION_NUMBER</name>
+                <parentId>35</parentId>
+            </children>
+            <children>
+                <description>PRESENTNNV(cell_reference, expr1, expr2) 형식으로 사용합니다.
+                    PRESENTNNV 함수는 인터로우 계산에만 관련이 있습니다. 이 함수는 SELECT 문의 model_clause에서만 사용할 수 있으며,
+                    model_rules_clause의 오른쪽에만 사용할 수 있습니다. 이 함수는 model_clause의 실행 이전에 cell_reference가
+                    존재하고 null이 아닌 경우 expr1을 반환합니다. 그렇지 않으면 expr2를 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT PRESENTNNV(cell_reference, expr1, expr2) FROM your_table MODEL
+                            RETURN UPDATED ROWS DIMENSION BY (dimension_column) MEASURES
+                            (measure_column) RULES (measure_column[ANY] = PRESENTNNV(cell_reference,
+                            1, 0));</query>
+                    </example>
+                </examples>
+                <name>PRESENTNNV</name>
+                <parentId>35</parentId>
+            </children>
+            <children>
+                <description>PRESENTV(cell_reference, expr1, expr2) 형식으로 사용합니다.
+                    PRESENTV 함수는 인터로우 계산에만 관련이 있습니다. 이 함수는 SELECT 문의 model_clause 내에서만 사용할 수 있으며,
+                    model_clause의 오른쪽에만 사용할 수 있습니다. 이 함수는 model_clause 실행 전에 cell_reference가 존재할 경우
+                    expr1을 반환하고, 그렇지 않을 경우 expr2를 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT PRESENTV(cell_reference, expr1, expr2) FROM your_table MODEL
+                            RETURN UPDATED ROWS DIMENSION BY (dimension_column) MEASURES
+                            (measure_column) RULES (measure_column[ANY] = PRESENTV(cell_reference,
+                            1, 0));</query>
+                    </example>
+                </examples>
+                <name>PRESENTV</name>
+                <parentId>35</parentId>
+            </children>
+            <children>
+                <description>PREVIOUS(cell_reference) 형식으로 사용합니다.
+                    PREVIOUS 함수는 인터로우 계산에만 관련이 있습니다. 이 함수는 SELECT 문의 model_clause 내에서만 사용할 수 있으며,
+                    model_rules_clause의 ITERATE ... [UNTIL] 절에서만 사용할 수 있습니다. 이 함수는 각 반복의 시작 시점에서
+                    cell_reference의 값을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT PREVIOUS(cell_reference) FROM your_table MODEL ITERATE (expr
+                            UNTIL condition) RETURN UPDATED ROWS DIMENSION BY (dimension_column)
+                            MEASURES (measure_column) RULES (measure_column[ANY] =
+                            PREVIOUS(cell_reference));</query>
+                    </example>
+                </examples>
+                <name>PREVIOUS</name>
+                <parentId>35</parentId>
+            </children>
+            <description>인접행 간의 계산에만 사용되며 SELECT문의 model 절에서만 사용됩니다. 재귀적이지 않습니다.</description>
+            <name>모델 함수(Model Functions)</name>
+            <parentId>8</parentId>
+        </children>
+        <description>SELECT, WHERE, ORDER BY, UPDATE SET 절에 사용 가능합니다.
+            각 행들에 대해 개별적으로 작용하여 데이터 값들을 조작하고, 각각의 행에 대한 조작 결과를 반환합니다.
+            여러 인자를 입력해도 단 하나의 결과만 반환합니다.
+            함수의 인자로 상수, 변수, 표현식이 사용 가능하고, 하나의 인수를 가지는 경우도 있지만 여러개의 인수를 가질 수도 있습니다.
+            특별한 경우가 아니면 함수의 인자로 함수를 사용하는 함수의 중첩이 가능합니다.</description>
+        <name>단일행 함수(Single-Row Functions)</name>
+        <parentId>1</parentId>
+    </children>
+    <children>
+        <children>
+            <children>
+                <description>STDDEV_SAMP(expr) OVER(analytic_clause) 형식으로 사용합니다.
+                    STDDEV_SAMP 함수는 누적 표본 표준 편차를 계산하고 표본 분산의 제곱근을 반환합니다. 이 함수는 집계 및 분석 함수로 사용할 수
+                    있습니다.
+                    이 함수는 숫자 유형 또는 숫자 유형으로 암묵적으로 변환될 수 있는 비숫자 유형을 인수로 사용합니다. 함수는 인수의 숫자 유형과 동일한 데이터
+                    유형을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT STDDEV_SAMP(column_name) AS std_dev_samp FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>STDDEV_SAMP</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>AVG(DISTINC/ALL expr) OVER(analytic_clause) 형식으로 사용합니다.
+                    AVG 함수는 expr의 평균 값을 반환합니다.
+                    이 함수는 숫자 데이터 유형 또는 숫자 데이터 유형으로 암시적으로 변환될 수 있는 비숫자 데이터 유형을 인수로 받습니다. 함수는 인수의 숫자
+                    데이터 유형과 동일한 데이터 유형을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT AVG(numeric_column) AS average_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>AVG</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>CORR(expr1, expr2) OVER(analytic_clause) 형식으로 사용합니다.
+                    CORR 함수는 숫자 쌍의 집합의 상관 계수를 반환합니다. 이 함수는 집계 함수나 분석 함수로 사용할 수 있습니다.
+                    이 함수는 숫자 데이터 타입이나 숫자 데이터 타입으로 암시적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 받습니다. Oracle은 가장 높은
+                    숫자 우선순위를 갖는 인수를 결정하고, 나머지 인수를 해당 데이터 타입으로 암시적으로 변환한 후 해당 데이터 타입을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT CORR(numeric_column1, numeric_column2) AS
+                            correlation_coefficient FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>CORR</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <children>
+                    <description>CORR_S 함수는 스피어만의 순위 상관계수(Spearman's rho correlation coefficient)를
+                        계산합니다. 입력 표현식은 (xi, yi) 쌍의 관측값 집합이어야 합니다. 이 함수는 먼저 각 값에 대해 순위를 할당합니다. 각 xi의
+                        값은 샘플 내의 다른 모든 xi 값 중에서의 순위로 대체되고, 각 yi의 값은 샘플 내의 다른 모든 yi 값 중에서의 순위로 대체됩니다.
+                        따라서 각 xi와 yi는 1부터 n까지의 값을 가지며, 여기서 n은 값 쌍의 총 개수입니다. 동점인 경우, 값이 약간 다른 경우에 해당
+                        값들이 가질 순위의 평균으로 할당됩니다. 그런 다음 함수는 순위의 선형 상관계수를 계산합니다.
+</description>
+                    <examples>
+                        <example>
+                            <query>SELECT CORR_S(xi, yi) AS correlation_coefficient FROM your_table;</query>
+                        </example>
+                    </examples>
+                    <name>CORR_S</name>
+                    <parentId>204</parentId>
+                </children>
+                <children>
+                    <description>CORR_K 함수는 켄달의 타우-b(Kendall's tau-b) 상관계수를 계산합니다. CORR_S와 마찬가지로 입력
+                        표현식은 (xi, yi) 쌍의 관측값 집합입니다. 상관계수를 계산하기 위해 함수는 일치하는 쌍과 불일치하는 쌍의 개수를 세어야 합니다.
+                        관측값 쌍이 일치하는 경우는 더 큰 x값을 가진 관측값이 더 큰 y값을 가지는 경우입니다. 관측값 쌍이 불일치하는 경우는 더 큰 x값을
+                        가진 관측값이 더 작은 y값을 가지는 경우입니다.
+                        tau-b의 유의성은 tau-b에 의해 나타나는 상관계수가 우연에 의한 것인 확률을 나타냅니다. 이는 0부터 1까지의 값으로 표현됩니다.
+                        tau-b의 값이 양수인 경우에는 유의한 상관관계를 나타내며(음수인 경우는 상반된 상관관계), 값이 작을수록 상관관계가 유의미합니다.
+</description>
+                    <examples>
+                        <example>
+                            <query>SELECT CORR_K(xi, yi) AS correlation_coefficient FROM your_table;</query>
+                        </example>
+                    </examples>
+                    <name>CORR_K</name>
+                    <parentId>204</parentId>
+                </children>
+                <description>CORR_*(expr1, expr2, CONFFICIENT, ONE_SIDED_SIG, TWO_SIDED_SIG) 형식으로
+                    사용합니다.
+                    CORR 함수는 피어슨 상관 계수(Pearson's correlation coefficient)를 계산하며, 입력으로는 숫자 표현식이
+                    필요합니다. CORR_* 함수는 비모수적 또는 순위 상관관계를 지원합니다. 이 함수들은 값의 순위를 할 수 있는 순서 척도(ordinal
+                    scaled)에서 표현식 간의 상관관계를 찾을 수 있습니다. 상관 계수는 -1에서 1까지의 값을 가지며, 1은 완벽한 양의 상관관계를 나타내고,
+                    -1은 완벽한 음의 상관관계를 나타냅니다(하나의 변수가 증가하면 다른 변수가 감소함). 0에 가까운 값은 상관관계가 없음을 의미합니다.
+                    이 함수들은 숫자 데이터 유형이나 숫자 데이터 유형으로 암시적으로 변환될 수 있는 비숫자 데이터 유형을 인수로 받습니다. Oracle
+                    데이터베이스는 가장 높은 숫자 우선순위를 가진 인수를 결정하고, 나머지 인수를 해당 데이터 유형으로 암시적으로 변환한 후 계산을 수행하며,
+                    결과로 NUMBER 데이터 유형을 반환합니다.
+</description>
+                <name>CORR_*</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>COUNT(DISTINC/ALL expr) OVER(analytic_clause) 형식으로 사용합니다.
+                    COUNT 함수는 쿼리에 의해 반환된 행의 개수를 반환합니다. 이 함수는 집계 함수나 분석 함수로 사용할 수 있습니다.
+                    DISTINCT를 지정하면 analytic_clause의 query_partition_clause만 지정할 수 있습니다.
+                    order_by_clause와 windowing_clause는 허용되지 않습니다.
+                    expr을 지정하면 COUNT는 expr이 null이 아닌 행의 개수를 반환합니다. 모든 행 또는 expr의 고유한 값만을 카운트할 수
+                    있습니다.
+                    별표(*)를 지정하면 이 함수는 중복 및 null을 포함한 모든 행을 반환합니다. COUNT는 결코 null을 반환하지 않습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT COUNT(*) "Total" FROM employees;</query>
+                    </example>
+                </examples>
+                <name>COUNT</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>COVAR_POP(expr1, expr2) OVER(analytic_clause) 형식으로 사용합니다.
+                    COVAR_POP 함수는 숫자 쌍의 모집단 공분산을 반환합니다. 이 함수는 집계 함수나 분석 함수로 사용할 수 있습니다.
+                    이 함수는 숫자 데이터 타입이나 숫자 데이터 타입으로 암시적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 받습니다. Oracle은 가장 높은
+                    숫자 우선순위를 갖는 인수를 결정하고, 나머지 인수를 해당 데이터 타입으로 암시적으로 변환한 후 해당 데이터 타입을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT COVAR_POP(numeric_column1, numeric_column2) AS
+                            population_covariance FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>COVAR_POP</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>COVAR_SAMP(expr1, expr2) OVER(analytic_clause) 형식으로 사용합니다.
+                    COVAR_SAMP 함수는 숫자 쌍의 표본 공분산을 반환합니다. 이 함수는 집계 함수나 분석 함수로 사용할 수 있습니다.
+                    이 함수는 숫자 데이터 타입이나 숫자 데이터 타입으로 암시적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 받습니다. Oracle은 가장 높은
+                    숫자 우선순위를 갖는 인수를 결정하고, 나머지 인수를 해당 데이터 타입으로 암시적으로 변환한 후 해당 데이터 타입을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT COVAR_SAMP(numeric_column1, numeric_column2) AS
+                            sample_covariance FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>COVAR_SAMP</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>집계할 때는 CUME_DIST(expr) WITHIN GROUP 형식으로 사용합니다.
+                    분석할 때는 CUME_DIST() OVER(query_partition_clause order_by_clause) 형식으로 사용합니다.
+                    CUME_DIST 함수는 값 그룹에서 주어진 값의 누적 분포를 계산합니다. CUME_DIST가 반환하는 값의 범위는 &gt;0에서
+                    &lt;=1입니다. 동일한 값을 가지는 경우 항상 동일한 누적 분포 값을 가집니다.
+                    이 함수는 숫자 데이터 타입이나 숫자 데이터 타입으로 암시적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 받습니다. Oracle
+                    Database는 가장 높은 숫자 우선순위를 갖는 인수를 결정하고, 나머지 인수를 해당 데이터 타입으로 암시적으로 변환한 후 해당 데이터 타입을
+                    반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT CUME_DIST(numeric_column) AS cumulative_distribution FROM
+                            your_table;</query>
+                    </example>
+                </examples>
+                <name>CUME_DIST</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>집계할 때는 DENSE_RANK(expr) WITHIN GROUP 형식으로 사용합니다.
+                    분석할 때는 DENSE_RANK() OVER(query_partition_clause order_by_clause) 형식으로 사용합니다.
+                    DENSE_RANK 함수는 정렬된 행 그룹에서 행의 순위를 계산하고 순위를 NUMBER로 반환합니다. 순위는 1부터 시작하는 연속적인
+                    정수입니다. 가장 큰 순위 값은 쿼리에 의해 반환된 고유한 값의 수입니다. 동점이 있는 경우 순위 값은 건너뛰지 않습니다. 순위 기준에 대해
+                    동일한 값을 가진 행은 동일한 순위를 받습니다. 이 함수는 상위 N개 또는 하위 N개의 보고서 작성에 유용합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT DENSE_RANK() OVER (ORDER BY column1) AS dense_rank FROM
+                            your_table;</query>
+                    </example>
+                </examples>
+                <name>DENSE_RANK</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>FIRST와 LAST는 매우 유사한 함수입니다. 두 함수 모두 주어진 정렬 기준에 따라 FIRST 또는 LAST로 순위가 매겨진
+                    행 집합에서 값의 집합에 대해 동작하는 집계 및 분석 함수입니다. FIRST 또는 LAST로 순위가 매겨진 행이 하나만 있는 경우, 집계는
+                    하나의 요소로 이루어진 집합에서 동작합니다.
+                    이 함수는 숫자 데이터 타입이나 숫자 데이터 타입으로 암시적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 받습니다. 함수는 인수의 숫자
+                    데이터 타입과 동일한 데이터 타입을 반환합니다.
+                    정렬된 그룹의 첫 번째 또는 마지막 행에서 필요한 값을 가져와야 하지만 필요한 값이 정렬 키가 아닌 경우, FIRST와 LAST 함수는 자체
+                    조인 또는 뷰의 필요성을 제거하고 성능을 향상시킵니다.
+</description>
+                <examples>
+                    <example />
+                </examples>
+                <name>FIRST</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>GROUP_ID는 GROUP BY 구문에서 발생하는 중복 그룹을 구별합니다. 쿼리 결과에서 중복 그룹을 필터링하는 데
+                    유용합니다. 이 함수는 GROUP BY 절이 포함된 SELECT 문에서만 사용할 수 있습니다. GROUP_ID는 중복 그룹을 고유하게 식별하기
+                    위해 Oracle NUMBER를 반환합니다.
+                    특정 그룹에 n개의 중복이 존재하는 경우, GROUP_ID는 0부터 n-1까지의 숫자를 반환합니다.
+</description>
+                <examples>
+                    <example />
+                </examples>
+                <name>GROUP_ID</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>GROUPING_ID(expr) 형식으로 사용합니다.
+                    GROUPING_ID 함수는 행과 관련된 GROUPING 비트 벡터에 해당하는 숫자를 반환합니다. GROUPING_ID 함수는 ROLLUP 또는
+                    CUBE와 같은 GROUP BY 확장 구문 및 GROUPING 함수가 포함된 SELECT 문에서만 사용할 수 있습니다. 많은 GROUP BY
+                    표현식이 있는 쿼리에서 특정 행의 GROUP BY 레벨을 결정하는 것은 많은 GROUPING 함수가 필요하여 번거로운 SQL을 초래합니다.
+                    GROUPING_ID는 이러한 경우에 유용합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT column1, column2, GROUPING_ID() AS grouping_id FROM your_table
+                            GROUP BY ROLLUP(column1, column2);</query>
+                    </example>
+                </examples>
+                <name>GROUPING_ID</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>FIRST와 LAST는 매우 유사한 함수입니다. 두 함수 모두 주어진 정렬 기준에 따라 FIRST 또는 LAST로 순위가 매겨진
+                    행들의 값 집합에 대해 작동하는 집계 및 분석 함수입니다. FIRST 또는 LAST로 순위가 매겨진 행이 하나만 있는 경우, 집계 함수는 해당
+                    행 하나만을 대상으로 작동합니다.
+                    이 함수는 숫자 데이터 타입이거나 숫자 데이터 타입으로 암시적으로 변환될 수 있는 비숫자 데이터 타입을 인수로 받습니다. 함수는 인수의 숫자
+                    데이터 타입과 동일한 데이터 타입을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT FIRST(numeric_column) AS first_value, LAST(numeric_column) AS
+                            last_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>LAST</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>MAX(DISTINC/ALL expr) OVER(analytic_clause) 형식으로 사용합니다.
+                    MAX 함수는 expr의 최댓값을 반환합니다. 이 함수는 집계 함수나 분석 함수로 사용할 수 있습니다.
+                    만약 DISTINCT를 지정하면, analytic_clause의 query_partition_clause만 지정할 수 있습니다.
+                    order_by_clause와 windowing_clause는 허용되지 않습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT MAX(numeric_column) AS max_value FROM your_table;</query>
+                    </example>
+                    <example>
+                        <query>SELECT column1, column2, MAX(numeric_column) OVER (PARTITION BY
+                            column1, column2) AS max_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>MAX</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>MEDIAN(expr) OVER(query_partition_clause) 형식으로 사용합니다.
+                    MEDIAN은 연속적인 분포 모델을 가정하는 역분포 함수입니다. 숫자나 날짜/시간 값이 주어지면 해당 값들을 정렬한 후 중간값 또는 중간값으로
+                    적용될 보간값을 반환합니다. 계산 과정에서 null 값은 무시됩니다.
+                    이 함수는 숫자 데이터 유형이나 숫자 데이터 유형으로 암묵적으로 변환할 수 있는 비숫자 데이터 유형을 인수로 받습니다. expr만 지정한 경우,
+                    함수는 인수의 숫자 데이터 유형과 동일한 데이터 유형을 반환합니다. OVER 절을 지정한 경우, Oracle Database는 인수 중에서 가장
+                    높은 숫자 우선순위를 가진 인수를 결정하고, 나머지 인수를 해당 데이터 유형으로 암묵적으로 변환한 후 해당 데이터 유형을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT column1, column2, MEDIAN(numeric_column) OVER (PARTITION BY
+                            column1, column2) AS median_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>MEDIAN</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>MIN(DISTINC/ALL expr) OVER(analytic_clause) 형식으로 사용합니다.
+                    MIN은 expr의 최소값을 반환합니다. 이 함수는 집계 함수 또는 분석 함수로 사용할 수 있습니다.
+                    만약 DISTINCT를 지정하면, analytic_clause의 order_by_clause와 windowing_clause를 사용할 수 없고,
+                    query_partition_clause만 사용할 수 있습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT column1, column2, MIN(numeric_column) OVER (PARTITION BY
+                            column1, column2) AS min_value FROM your_table;</query>
+                    </example>
+                    <example>
+                        <query>SELECT MIN(DISTINCT numeric_column) AS min_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>MIN</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>PERCENTILE_CONT(expr) WITHIN GROUP(ORDER BY expr ASC/DESC)
+                    OVER(query_partition_clause) 형식으로 사용합니다.
+                    PERCENTILE_CONT는 연속적인 분포 모델을 가정하는 역분포 함수입니다. 백분위 값과 정렬 기준을 입력받아, 해당 백분위 값에 해당하는
+                    보간된 값을 반환합니다. 계산 시 NULL 값은 무시됩니다.
+                    이 함수는 숫자 데이터 타입 또는 숫자 데이터 타입으로 암묵적으로 변환 가능한 비숫자 데이터 타입을 인수로 사용합니다. 함수는 인수의 숫자
+                    데이터 타입과 동일한 데이터 타입을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY numeric_column) AS
+                            percentile_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>PERCENTILE_CONT</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>PERCENTILE_DISC(expr) WITHIN GROUP(ORDER BY expr ASC/DESC)
+                    OVER(query_partition_clause) 형식으로 사용합니다.
+                    PERCENTILE_DISC는 이산적인 분포 모델을 가정하는 역분포 함수입니다. 백분위 값과 정렬 기준을 입력받아 집합에서 요소를 반환합니다.
+                    계산 시 NULL 값은 무시됩니다.
+                    이 함수는 숫자 데이터 타입이나 숫자 데이터 타입으로 암묵적으로 변환 가능한 비숫자 데이터 타입을 인수로 사용합니다. 함수는 인수의 숫자 데이터
+                    타입과 동일한 데이터 타입을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT PERCENTILE_DISC(0.5) WITHIN GROUP (ORDER BY numeric_column) AS
+                            percentile_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>PERCENTILE_DISC</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>집계할 때는 PERCENT_RANK(expr) WITHIN GROUP(ORDER BY expr ASC/DESC NULLS
+                    FIRST/LAST) 형식으로 사용합니다.
+                    분석할 때는 PERCENT_RANK() OVER(query_partition_clause order_by_clause) 형식으로 사용합니다.
+                    PERCENT_RANK 함수는 CUME_DIST (누적 분포) 함수와 유사합니다. PERCENT_RANK 함수의 반환 값 범위는 0부터
+                    1까지(포함)입니다. 어떤 집합에서 첫 번째 행의 PERCENT_RANK는 0입니다. 반환 값은 NUMBER 데이터 타입입니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT PERCENT_RANK() WITHIN GROUP (ORDER BY numeric_column) AS
+                            percent_rank_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>PERCENT_RANK</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>집계할 때는 RANK(expr) WITHIN GROUP (ORDER BY expr DESC/ASC NULLS
+                    FIRST/LAST) 형식으로 사용합니다.
+                    분석할 때는 RANK() OVER (query_partition_clause order_by_clause) 형식으로 사용합니다.
+                    RANK 함수는 값의 순위를 계산하는 함수입니다. 반환 타입은 NUMBER입니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT RANK() OVER (ORDER BY numeric_column) AS rank_value FROM
+                            your_table;</query>
+                    </example>
+                </examples>
+                <name>RANK</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <children>
+                    <description>REGR_SLOPE 함수는 선의 기울기를 반환합니다. 반환 값은 숫자 데이터 유형이며 null일 수 있습니다. null
+                        (expr1, expr2) 쌍이 제거된 후 다음 계산을 수행합니다:
+
+                        COVAR_POP(expr1, expr2) / VAR_POP(expr2)</description>
+                    <examples>
+                        <example />
+                    </examples>
+                    <name>REGR_SLOPE</name>
+                    <parentId>224</parentId>
+                </children>
+                <children>
+                    <description>REGR_INTERCEPT 함수는 회귀선의 y-절편을 반환합니다. 반환 값은 숫자 데이터 유형이며 null일 수
+                        있습니다. null (expr1, expr2) 쌍이 제거된 후 다음 계산을 수행합니다:
+
+                        AVG(expr1) - REGR_SLOPE(expr1, expr2) * AVG(expr2)</description>
+                    <examples>
+                        <example />
+                    </examples>
+                    <name>REGR_INTERCEPT </name>
+                    <parentId>224</parentId>
+                </children>
+                <children>
+                    <description>REGR_COUNT 함수는 회귀선을 적합시키는 데 사용된 null이 아닌 숫자 쌍의 개수를 나타내는 정수를 반환합니다.</description>
+                    <examples>
+                        <example />
+                    </examples>
+                    <name>REGR_COUNT</name>
+                    <parentId>224</parentId>
+                </children>
+                <children>
+                    <description>REGR_R2 함수는 회귀분석의 결정 계수(R-제곱 또는 적합도)를 반환합니다. 반환 값은 숫자 데이터 유형이며
+                        null일 수 있습니다. VAR_POP(expr1) 및 VAR_POP(expr2)는 null 쌍이 제거된 후에 계산됩니다. 반환 값은
+                        다음과 같습니다:
+                        VAR_POP(expr2) = 0인 경우 NULL
+                        VAR_POP(expr1) = 0이고 VAR_POP(expr2) ≠ 0인 경우 1
+                        VAR_POP(expr1) &gt; 0이고 VAR_POP(expr2) ≠ 0인 경우 CORR(expr1, expr2)의 제곱인
+                        POWER(CORR(expr1, expr2), 2)</description>
+                    <examples>
+                        <example />
+                    </examples>
+                    <name>REGR_R2</name>
+                    <parentId>224</parentId>
+                </children>
+                <children>
+                    <description>REGR_AVGX 함수는 회귀선의 독립 변수(expr2)의 평균을 계산합니다. null (expr1, expr2) 쌍이
+                        제거된 후 다음 계산을 수행합니다:
+
+                        AVG(expr2)</description>
+                    <examples>
+                        <example />
+                    </examples>
+                    <name>REGR_AVGX </name>
+                    <parentId>224</parentId>
+                </children>
+                <children>
+                    <description>REGR_AVGY 함수는 회귀선의 종속 변수(expr1)의 평균을 계산합니다. null (expr1, expr2) 쌍이
+                        제거된 후 다음 계산을 수행합니다:
+
+                        AVG(expr1)</description>
+                    <examples>
+                        <example />
+                    </examples>
+                    <name>REGR_AVGY</name>
+                    <parentId>224</parentId>
+                </children>
+                <children>
+                    <description>REGR_SXX 함수는 null (expr1, expr2) 쌍이 제거된 후 다음 계산을 수행합니다:
+                        REGR_COUNT(expr1, expr2) * VAR_POP(expr2)</description>
+                    <examples>
+                        <example />
+                    </examples>
+                    <name>REGR_SXX</name>
+                    <parentId>224</parentId>
+                </children>
+                <children>
+                    <description>REGR_SXY 함수는 null (expr1, expr2) 쌍이 제거된 후 다음 계산을 수행합니다:
+                        REGR_COUNT(expr1, expr2) * COVAR_POP(expr1, expr2)</description>
+                    <examples>
+                        <example />
+                    </examples>
+                    <name>REGR_SXY</name>
+                    <parentId>224</parentId>
+                </children>
+                <children>
+                    <description>REGR_SYY 함수는 null (expr1, expr2) 쌍이 제거된 후 다음 계산을 수행합니다:
+                        REGR_COUNT(expr1, expr2) * VAR_POP(expr1)</description>
+                    <examples>
+                        <example />
+                    </examples>
+                    <name>REGR_SYY</name>
+                    <parentId>224</parentId>
+                </children>
+                <description>선형 회귀 함수로는 REGR_SLOPE, REGR_INTERCEPT, REGR_COUNT, REGR_R2, REGR_AVGX,
+                    REGR_AVGY, REGR_SXX, REGR_SYY, REGR_SXY 가 있습니다.
+                    함수(expr1, expr2) OVER(analytic_clause) 형식으로 사용합니다.
+
+                    선형 회귀 함수는 숫자 쌍의 집합에 최소제곱법 회귀선을 적합시킵니다. 이 함수는 집계 및 분석 함수로 사용할 수 있습니다.</description>
+                <name>선형 회귀 함수(REGR_ (Linear Regression) Functions)</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>STATS_BINOMIAL_TEST(expr1, expr2, p,
+                    TWO_SIDED_PROB/EXACT_PROB/ONE_SIDED_OR_MORE/ONE_SIDED_PROB_OR_LESS) 형식으로 사용합니다.
+                    STATS_BINOMIAL_TEST는 이분형 변수에 사용되는 정확한 확률 테스트로, 두 가지 가능한 값만 존재하는 경우에 사용됩니다. 이 함수는
+                    표본 비율과 주어진 비율 간의 차이를 검정합니다. 이러한 검정에서는 일반적으로 표본 크기가 작습니다.
+                    이 함수는 네 개의 인수를 사용합니다: expr1은 조사 대상인 표본입니다. expr2는 비율이 예상되는 값들을 포함하며, p는 테스트할
+                    비율입니다. 네 번째 인수는 VARCHAR2 유형의 반환 값입니다. 네 번째 인수를 생략하면 기본값인 TWO_SIDED_PROB이 사용됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT STATS_BINOMIAL_TEST(expr1, expr2, p) AS test_result FROM
+                            your_table;</query>
+                    </example>
+                </examples>
+                <name>STATS_BINOMIAL_TEST</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>STATS_CROSSTAB(expr1, expr2,
+                    CHISQ_OBS/CHISQ_SIG/CHISQ_QF/CONT_COEFFICIENT/CRAMERS_V/PHI_COEFFICIENT/COHENS_K)
+                    형식으로 사용합니다.
+                    교차표 (일반적으로 교차표라고 불립니다)는 두 개의 명목 변수를 분석하는 데 사용되는 방법입니다. STATS_CROSSTAB 함수는 세 개의
+                    인수를 사용합니다: 두 개의 표현식과 VARCHAR2 유형의 반환 값입니다. expr1과 expr2는 분석되는 두 변수입니다. 이 함수는 세
+                    번째 인수의 값에 따라 하나의 숫자를 반환합니다. 세 번째 인수를 생략하면 기본값인 CHISQ_SIG가 사용됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT STATS_CROSSTAB(expr1, expr2, 'CHISQ_SIG') AS crosstab_result
+                            FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>STATS_CROSSTAB</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>STATS_F_TEST(expr1, expr2,
+                    STATISTIC/DF_NUM/DF_DEN/ONE_SIDED_SIG/TWO_SIDED_SIG) 형식으로 사용합니다.
+                    STATS_F_TEST 함수는 두 분산이 유의하게 다른지를 테스트합니다. 관찰된 F 값은 한 분산을 다른 분산으로 나눈 비율이므로, 1과 매우
+                    다른 값은 일반적으로 유의한 차이를 나타냅니다.
+                    이 함수는 세 개의 인수를 사용합니다: expr1은 그룹화 또는 독립 변수이고, expr2는 값의 표본입니다. 함수는 세 번째 인수의 값에 따라
+                    하나의 숫자를 반환합니다. 세 번째 인수를 생략하면 기본값인 TWO_SIDED_SIG가 사용됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT STATS_F_TEST(expr1, expr2, 'TWO_SIDED_SIG') AS f_test_result
+                            FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>STATS_F_TEST</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>STATS_KS_TEST(expr1, expr2, STATISTIC/SIG) 형식으로 사용합니다.
+                    STATS_KS_TEST는 두 개의 표본을 비교하여 동일한 모집단에서 가져온 것인지 또는 동일한 분포를 가진 모집단에서 가져온 것인지를
+                    테스트하는 Kolmogorov-Smirnov 함수입니다. 이 함수는 표본이 가져온 모집단이 정규 분포를 따른다고 가정하지 않습니다.
+                    이 함수는 세 개의 인수를 사용합니다: 두 개의 표현식과 VARCHAR2 유형의 반환 값입니다. expr1은 데이터를 그룹으로 분류합니다.
+                    expr2는 각 그룹에 대한 값을 포함합니다. 함수는 세 번째 인수에 따라 하나의 값을 반환합니다. 세 번째 인수를 생략하면 기본값인 SIG가
+                    사용됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT STATS_KS_TEST(expr1, expr2, 'SIG') AS ks_test_result FROM
+                            your_table;</query>
+                    </example>
+                </examples>
+                <name>STATS_KS_TEST</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>STATS_MODE(expr) 형식으로 사용합니다.
+                    STATS_MODE 함수는 값 집합을 인수로 받고, 가장 빈도가 높게 발생하는 값이 반환됩니다. 여러 개의 모드가 존재하는 경우, Oracle
+                    Database는 하나를 선택하고 해당 값만 반환합니다.</description>
+                <examples>
+                    <example />
+                </examples>
+                <name>STATS_MODE</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>STATS_MW_TEST(expr1, expr2,
+                    STATISTIC/U_STATISTIC/ONE_SIDED_SIG/TWO_SIDED_SIG) 형식으로 사용합니다.
+                    STATS_MW_TEST 함수는 표본 간 차이가 STATS_T_TEST_* 함수처럼 정규 분포를 따른다고 가정하지 않습니다. 이 함수는 세 개의
+                    인수와 VARCHAR2 유형의 반환 값이 필요합니다. expr1은 데이터를 그룹으로 분류합니다. expr2는 각 그룹의 값을 포함합니다. 함수는
+                    세 번째 인수에 따라 하나의 값을 반환합니다. 세 번째 인수를 생략하면 기본값인 TWO_SIDED_SIG가 사용됩니다. </description>
+                <examples>
+                    <example>
+                        <query>SELECT STATS_MW_TEST(expr1, expr2, 'TWO_SIDED_SIG') AS mw_test_result
+                            FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>STATS_MW_TEST</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>STATS_ONE_WAY_ANOVA(expr1, expr2,
+                    SUM_SQUARES_BETEEN/SUM_SQUARES_WITHIN/DF_BETWEEN/DF_WITHIN/MEAN_SQUARES_BETWEEN/MEAN_SQUARES_WITHIN/F_RATIO/SIG)
+                    형식으로 사용합니다.
+                    일원분산분석(One-way Analysis of Variance) 함수 (STATS_ONE_WAY_ANOVA)는 두 가지 다른 분산 추정치를
+                    비교하여 그룹 또는 변수의 평균 차이를 통계적으로 유의한지 테스트합니다. 한 추정치는 각 그룹 또는 범주 내부의 분산에 기반합니다. 이를 그룹
+                    내 평균제곱 또는 오차 제곱평균(mean squares within or mean square error)이라고 합니다. 다른 추정치는 그룹
+                    평균 간 분산에 기반합니다. 이를 그룹 간 평균제곱(mean squares between)이라고 합니다. 그룹의 평균이 유의하게 다르다면, 그룹
+                    간 평균제곱은 기대치보다 크고 그룹 내 평균제곱과 일치하지 않을 것입니다. 그룹의 평균이 일관되면, 두 분산 추정치는 대략 동일할 것입니다.
+                    STATS_ONE_WAY_ANOVA 함수는 세 개의 인수와 VARCHAR2 유형의 반환 값이 필요합니다. expr1은 독립 또는 그룹 변수로
+                    데이터를 여러 그룹으로 분할합니다. expr2는 각 그룹의 구성원에 해당하는 값이 있는 종속 변수(숫자 표현식)입니다. 함수는 세 번째 인수에
+                    따라 하나의 값을 반환합니다. 세 번째 인수를 생략하면 기본값인 SIG가 사용됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT STATS_ONE_WAY_ANOVA(expr1, expr2, 'SIG') AS anova_result FROM
+                            your_table;</query>
+                    </example>
+                </examples>
+                <name>STATS_ONE_WAY_ANOVA</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <children>
+                    <description>두 표본, 쌍체 t-검정(또는 교차 t-검정)은 두 개의 관련된 표본 간에 평균의 차이가 통계적으로 유의한지를 검정하는
+                        방법입니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT STATS_T_TEST_PAIRED(expr1, expr2, 'SIG') AS t_test_result
+                                FROM your_table;</query>
+                        </example>
+                    </examples>
+                    <name>STATS_T_TEST_PAIRED</name>
+                    <parentId>241</parentId>
+                </children>
+                <children>
+                    <description>단일 표본 t-검정은 표본 평균이 주어진 값과 유의하게 다른지를 테스트하는 방법입니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT STATS_T_TEST_ONE(expr1, expr2, 'SIG') AS t_test_result
+                                FROM your_table;</query>
+                        </example>
+                    </examples>
+                    <name>STATS_T_TEST_ONE</name>
+                    <parentId>241</parentId>
+                </children>
+                <children>
+                    <description>동일한 분산을 가진 두 독립 그룹 간의 t-검정 (통합 분산)은 두 그룹의 평균 차이가 통계적으로 유의한지를 검정하는
+                        방법입니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT STATS_T_TEST_INDEP(expr1, expr2, 'SIG') AS t_test_result
+                                FROM your_table;</query>
+                        </example>
+                    </examples>
+                    <name>STATS_T_TEST_INDEP</name>
+                    <parentId>241</parentId>
+                </children>
+                <children>
+                    <description>등분산을 가지지 않은 두 독립 그룹 간의 t-검정 (비등분산)은 두 그룹의 평균 차이가 통계적으로 유의한지를 검정하는
+                        방법입니다.</description>
+                    <examples>
+                        <example>
+                            <query>SELECT STATS_T_TEST_INDEPU(expr1, expr2, 'SIG') AS t_test_result
+                                FROM your_table;</query>
+                        </example>
+                    </examples>
+                    <name>STATS_T_TEST_INDEPU</name>
+                    <parentId>241</parentId>
+                </children>
+                <description>STATS_T_TEST_ONE, STATS_T_TEST_PAIRED, STATS_T_TEST_INDEP,
+                    STATS_T_TEST_INDEPU 함수가 있습니다.
+                    함수(expr1, expr2, STATISTIC/DF/ONE_SIDED_SIG/TWO_SIDED_SIG) 형식으로 사용합니다.</description>
+                <name>STATS_T_TEST_*</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>STATS_WSR_TEST(expr1, expr2, STATISTIC/ONE_SIDED_SIG/TWO_SIDED_SIG)
+                    형식으로 사용합니다.
+                    STATS_WSR_TEST는 짝을 이룬 표본들의 Wilcoxon Signed Ranks 검정으로, 표본들의 차이의 중앙값이 0과 유의하게
+                    다른지를 판단하는 방법입니다. 차이의 절댓값을 정렬하고 순위를 할당합니다. 그런 다음 귀무가설은 양수 차이의 순위 합이 음수 차이의 순위 합과
+                    같다는 것을 나타냅니다.
+                    이 함수는 세 개의 인수와 VARCHAR2 유형의 반환 값이 필요합니다. expr1은 짝을 이룬 표본을 나타내는 열이나 표현식입니다.
+                    expr2는 짝을 이룬 다른 표본을 나타내는 열이나 표현식입니다. 함수는 세 번째 인수에 따라 하나의 값을 반환합니다. 세 번째 인수를 생략하면
+                    기본값인 SIG가 사용됩니다. 반환 값의 의미는 아래의 표에서 설명됩니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT STATS_WSR_TEST(expr1, expr2, 'SIG') AS wsr_test_result FROM
+                            your_table;</query>
+                    </example>
+                </examples>
+                <name>STATS_WSR_TEST</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>STDDEV(DISTINCT/ALL expr) OVER(analytic_clause) 형식으로 사용합니다.
+                    STDDEV 함수는 숫자 집합인 expr의 표본 표준 편차를 반환합니다. 이 함수는 집계 및 분석 함수로 사용할 수 있습니다.
+                    STDDEV_SAMP와 다른 점은 STDDEV는 입력 데이터가 1개의 행만 있는 경우에도 0을 반환하는 반면, STDDEV_SAMP는 null을
+                    반환합니다.
+                    Oracle 데이터베이스는 VARIANCE 집계 함수에 대해 정의된 분산의 제곱근으로 표준 편차를 계산합니다.
+                    이 함수는 숫자 유형 또는 숫자 유형으로 암묵적으로 변환될 수 있는 비숫자 유형을 인수로 사용합니다. 함수는 인수의 숫자 유형과 동일한 데이터
+                    유형을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT STDDEV(column_name) AS std_dev FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>STDDEV</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>STDDEV_POP(expr) OVER(analytic_clause) 형식으로 사용합니다.
+                    STDDEV_POP 함수는 모집단의 표준 편차를 계산하고 모집단 분산의 제곱근을 반환합니다. 이 함수는 집계 및 분석 함수로 사용할 수
+                    있습니다.
+                    이 함수는 숫자 유형 또는 숫자 유형으로 암묵적으로 변환될 수 있는 비숫자 유형을 인수로 사용합니다. 함수는 인수의 숫자 유형과 동일한 데이터
+                    유형을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT STDDEV_POP(column_name) AS std_dev_pop FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>STDDEV_POP</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>SUM(DISTINCT/ALL expr) OVER(analytic_clause) 형식으로 사용합니다.
+                    SUM 함수는 expr의 값들의 합을 반환합니다. 이 함수는 집계 함수 또는 분석 함수로 사용할 수 있습니다.
+                    이 함수는 숫자 유형 또는 숫자 유형으로 암묵적으로 변환될 수 있는 비숫자 유형을 인수로 사용합니다. 함수는 인수의 숫자 유형과 동일한 데이터
+                    유형을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT SUM(column_name) AS sum_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>SUM</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>VAR_POP(expr) OVER(analytic_clause) 형식으로 사용합니다.
+                    VAR_POP 함수는 주어진 숫자 집합에서 null 값을 제외한 모집단 분산을 계산하여 반환합니다. 이 함수는 집계 및 분석 함수로 사용할 수
+                    있습니다.
+                    이 함수는 숫자 유형 또는 숫자 유형으로 암묵적으로 변환될 수 있는 비숫자 유형을 인수로 사용합니다. 함수는 인수의 숫자 유형과 동일한 데이터
+                    유형을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT VAR_POP(column_name) AS var_pop_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>VAR_POP</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>VAR_SAMP(expr) OVER(analytic_clause) 형식으로 사용합니다.
+                    VAR_SAMP 함수는 주어진 숫자 집합에서 null 값을 제외한 표본 분산을 계산하여 반환합니다. 이 함수는 집계 및 분석 함수로 사용할 수
+                    있습니다.
+                    이 함수는 숫자 유형 또는 숫자 유형으로 암묵적으로 변환될 수 있는 비숫자 유형을 인수로 사용합니다. 함수는 인수의 숫자 유형과 동일한 데이터
+                    유형을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT VAR_SAMP(column_name) AS var_samp_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>VAR_SAMP</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>
+                    SUM(DISTINCT/ALL expr) OVER(analytic_clause) 형식으로 사용합니다.
+                    VARIANCE 함수는 expr의 분산을 반환합니다. 이 함수는 집계 또는 분석 함수로 사용할 수 있습니다.
+                    Oracle Database는 다음과 같이 expr의 분산을 계산합니다:
+                    expr의 행 수 = 1이면 0
+                    expr의 행 수 &gt; 1이면 VAR_SAMP
+                    DISTINCT를 지정하는 경우, analytic_clause의 query_partition_clause만 지정할 수 있습니다.
+                    order_by_clause 및 windowing_clause는 허용되지 않습니다.
+                    이 함수는 숫자 유형 또는 숫자 유형으로 암묵적으로 변환될 수 있는 비숫자 유형을 인수로 사용합니다. 함수는 인수의 숫자 유형과 동일한 데이터
+                    유형을 반환합니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT VARIANCE(column_name) AS variance_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>VARIANCE</name>
+                <parentId>32</parentId>
+            </children>
+            <children>
+                <description>GROUPING(expr) 형식으로 사용합니다.
+                    GROUPING 함수는 일반적인 그룹화된 행과 슈퍼집계 행을 구분합니다. ROLLUP 및 CUBE와 같은 GROUP BY 확장 구문은 모든 값을
+                    null로 나타내는 슈퍼집계 행을 생성합니다. GROUPING 함수를 사용하여 슈퍼집계 행에서 모든 값을 나타내는 null을 일반 행의
+                    null과 구분할 수 있습니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT GROUPING(column1) AS is_superaggregate, SUM(column2) AS
+                            total_sum FROM your_table GROUP BY ROLLUP(column1);</query>
+                    </example>
+                </examples>
+                <name>GROUPING</name>
+                <parentId>32</parentId>
+            </children>
+            <description>집계 함수는 단일 행이 아닌 행 그룹을 기반으로 한 개의 결과 행을 반환합니다.
+                일반적으로 SELECT문의 GROUB BY 절에서 사용되며, GROUB BY 절을 생략하면 오라클은 질의된 테이블이나 뷰의 모든 행에 대해 집계 함수를
+                적용합니다.
+                집계 함수는 SELECT, ORDER BY, HAVING 절에서도 사용할 수 있습니다.</description>
+            <name>집계 함수(Aggregate Functions)</name>
+            <parentId>9</parentId>
+        </children>
+        <children>
+            <children>
+                <description>NTILE(expr) OVER(query_partition_clause order_by_clause) 형식으로 사용합니다.
+                    NTILE은 분석 함수입니다. 이 함수는 expr로 지정한 수의 버킷으로 정렬된 데이터 집합을 나누고 각 행에 적절한 버킷 번호를 할당합니다.
+                    버킷은 1부터 expr까지 번호가 매겨집니다. 각 파티션마다 expr 값은 양수 상수로 해결되어야 합니다. Oracle Database는 정수를
+                    기대하며, expr이 정수 상수가 아닌 경우 Oracle은 값을 정수로 절사합니다. 반환 값은 NUMBER입니다.
+                    버킷에 포함된 행의 수는 최대 1까지 다를 수 있습니다. 나머지 값(행 수를 버킷으로 나눈 나머지)은 버킷 1부터 시작하여 각각 한 개씩
+                    배정됩니다.
+                    만약 expr이 행 수보다 크다면, 행 수와 동일한 수의 버킷이 채워지고 나머지 버킷은 비어있을 것입니다.
+                    NTILE 또는 다른 분석 함수를 expr에 사용할 수 없습니다. 즉, 분석 함수를 중첩할 수 없지만, expr에는 다른 내장 함수 표현식을
+                    사용할 수 있습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT col1, col2, NTILE(4) OVER (ORDER BY col1) AS bucket_number
+                            FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>NTILE</name>
+                <parentId>33</parentId>
+            </children>
+            <children>
+                <description>FIRST_VALUE(expr IGNORE NULLS) OVER(analytic_clause) 형식으로 사용합니다.
+                    FIRST_VALUE는 분석 함수입니다. 이 함수는 정렬된 값 집합에서 첫 번째 값을 반환합니다. 집합의 첫 번째 값이 null인 경우,
+                    IGNORE NULLS를 지정하지 않은 경우 함수는 NULL을 반환합니다. 이 설정은 데이터 밀도화에 유용합니다. IGNORE NULLS를
+                    지정하면 FIRST_VALUE는 집합에서 첫 번째로 null이 아닌 값을 반환하며, 모든 값이 null인 경우에는 NULL을 반환합니다. 데이터
+                    밀도화의 예제에 대해서는 "Using Partitioned Outer Joins: Examples"를 참조하십시오.
+                    FIRST_VALUE 또는 다른 분석 함수를 expr에 사용할 수 없습니다. 즉, 분석 함수를 중첩할 수 없지만, expr에는 다른 내장 함수
+                    표현식을 사용할 수 있습니다. </description>
+                <examples>
+                    <example>
+                        <query>SELECT col1, col2, FIRST_VALUE(col3) OVER (ORDER BY col1) AS
+                            first_val FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>FIRST_VALUE</name>
+                <parentId>33</parentId>
+            </children>
+            <children>
+                <description>LAG(value_expr, offset, default) OVER(query_partition_clause
+                    order_by_clause) 형식으로 사용합니다.
+                    LAG는 분석 함수입니다. 이 함수는 자체 조인 없이 한 번에 여러 행의 테이블에 액세스할 수 있도록 제공됩니다. 쿼리에서 반환된 일련의 행과
+                    커서의 위치에 따라 LAG는 해당 위치 이전의 물리적 오프셋에 있는 행에 액세스할 수 있습니다.
+                    offset을 지정하지 않으면 기본값은 1입니다. 오프셋이 윈도우 범위를 벗어나면 선택적으로 지정한 기본값이 반환됩니다. default를
+                    지정하지 않으면 기본값은 null입니다.
+                    value_expr에 LAG나 다른 분석 함수를 사용할 수 없습니다. 즉, 분석 함수를 중첩할 수 없지만 value_expr에는 다른 내장 함수
+                    표현식을 사용할 수 있습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT col1, col2, LAG(col2, 1, 'N/A') OVER (ORDER BY col1) AS
+                            lag_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>LAG</name>
+                <parentId>33</parentId>
+            </children>
+            <children>
+                <description>LAST_VALUE(expr IGNORE NULLS) OVER(analytic_clause) 형식으로 사용합니다.
+                    LAST_VALUE는 분석 함수입니다. 이 함수는 정렬된 값 집합에서 마지막 값을 반환합니다. 값 집합의 마지막 값이 null인 경우, 함수는
+                    IGNORE NULLS를 지정하지 않는 한 NULL을 반환합니다. 이 설정은 데이터 밀도화에 유용합니다. IGNORE NULLS를 지정하면
+                    LAST_VALUE는 집합에서 첫 번째로 나타나는 비-null 값을 반환하거나 모든 값이 null인 경우 NULL을 반환합니다. 데이터 밀도화에
+                    대한 예시는 "Using Partitioned Outer Joins: Examples"를 참조하십시오.
+                    expr에는 LAST_VALUE나 다른 분석 함수를 사용할 수 없습니다. 즉, 분석 함수를 중첩할 수는 없지만, expr에는 다른 내장 함수
+                    표현식을 사용할 수 있습니다. </description>
+                <examples>
+                    <example>
+                        <query>SELECT col1, col2, LAST_VALUE(col2 IGNORE NULLS) OVER (ORDER BY col1)
+                            AS last_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>LAST_VALUE</name>
+                <parentId>33</parentId>
+            </children>
+            <children>
+                <description>LEAD(value_expr, offset, default) OVER(query_partition_clause
+                    order_by_clause) 형식으로 사용합니다.
+                    LEAD는 분석 함수입니다. 이 함수는 자체 조인 없이 동시에 테이블의 하나 이상의 행에 액세스할 수 있습니다. 질의 결과로 반환된 일련의 행과
+                    커서 위치를 기준으로 LEAD는 해당 위치를 넘어서는 지정된 물리적 오프셋에 있는 행에 액세스합니다.
+                    만약 오프셋을 지정하지 않으면, 기본값은 1입니다. 옵션으로 지정한 기본값은 오프셋이 테이블 범위를 벗어날 경우 반환됩니다. 기본값을 지정하지
+                    않으면 null이 기본값으로 사용됩니다.
+                    value_expr에는 LEAD나 다른 분석 함수를 사용할 수 없습니다. 즉, 분석 함수를 중첩할 수 없지만, value_expr에는 다른 내장
+                    함수 표현식을 사용할 수 있습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT col1, col2, LEAD(col2, 2, 'N/A') OVER (ORDER BY col1) AS
+                            lead_value FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>LEAD</name>
+                <parentId>33</parentId>
+            </children>
+            <children>
+                <description>RATIO_TO_REPORT(expr) OVER(query_partition_clause)
+                    RATIO_TO_REPORT은 분석 함수입니다. 이 함수는 값의 비율을 값 집합의 합에 대한 비율로 계산합니다. expr이 null로 평가되면,
+                    비율을 보고하는 값도 null로 평가됩니다.
+                    값 집합은 query_partition_clause에 의해 결정됩니다. 이 절을 생략하면, 비율을 보고는 쿼리에서 반환된 모든 행을 대상으로
+                    계산됩니다.
+                    RATIO_TO_REPORT 또는 다른 분석 함수를 expr에 사용할 수 없습니다. 즉, 분석 함수를 중첩할 수 없지만, expr에는 다른 내장
+                    함수 표현식을 사용할 수 있습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT col1, RATIO_TO_REPORT(col2) OVER (PARTITION BY col1) AS ratio
+                            FROM your_table;</query>
+                    </example>
+                </examples>
+                <name>RATIO_TO_REPORT</name>
+                <parentId>33</parentId>
+            </children>
+            <children>
+                <description>ROW_NUMBER(expr) OVER(query_partition_clause)
+                    ROW_NUMBER는 분석 함수입니다. 이 함수는 적용된 각 행에 고유한 번호를 할당합니다. 번호는 order_by_clause에 지정된 순서로
+                    행을 정렬한 후 1부터 시작합니다.
+                    ROW_NUMBER를 사용하여 ROW_NUMBER 값을 검색하는 서브쿼리를 중첩하면, 내부 쿼리의 결과에서 정확한 하위 집합의 행을 찾을 수
+                    있습니다. 이 함수의 사용을 통해 상위 N개, 하위 N개 및 특정 범위의 행을 보고할 수 있습니다. 일관된 결과를 위해 쿼리는 결정론적인 정렬
+                    순서를 보장해야 합니다.
+                    ROW_NUMBER나 다른 분석 함수를 expr에 사용할 수 없습니다. 즉, 분석 함수를 중첩할 수 없지만, expr에는 다른 내장 함수
+                    표현식을 사용할 수 있습니다.</description>
+                <examples>
+                    <example>
+                        <query>SELECT col1, col2, ROW_NUMBER() OVER (ORDER BY col1) AS row_num FROM
+                            your_table;</query>
+                    </example>
+                </examples>
+                <name>ROW_NUMBER</name>
+                <parentId>33</parentId>
+            </children>
+            <description>분석 함수는 행 그룹을 기반으로 값을 계산합니다. 집계 함수와는 달리 각 그룹에 대해 여러 개의 행을 반환합니다. 행 그룹은
+                윈도우(window)라고 하며, 분석 절에 의해 정의됩니다.
+                각 행애 대해 슬라이딩 윈도우가 정의되며, 현재 행에 대한 계산을 수행하기 위해 사용되는 행의 범위를 결정합니다. 윈도우 크기는 물리적인 행의 개수나
+                시간과 같은 논리적인 간격을 기반으로 할 수 있습니다.
+                분석 함수는 쿼리에서 최종 ORDER BY 절을 제외한 마지막 단계로 수행됩니다. 분석 함수는 SELECT, ORDER BY 절에만 사용할 수
+                있습니다.</description>
+            <name>분석 함수(Analytic Functions)</name>
+            <parentId>9</parentId>
+        </children>
+        <children>
+            <children>
+                <description>CARDINALITY(nested_table) 형식으로 사용합니다.
+                    CARDINALITY 함수는 중첩 테이블의 요소 수를 반환합니다. 반환 형식은 NUMBER입니다. 중첩 테이블이 비어 있거나 null 컬렉션인
+                    경우, CARDINALITY는 NULL을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT CARDINALITY(nested_table_column) AS element_count FROM
+                            your_table WHERE condition;</query>
+                    </example>
+                </examples>
+                <name>CARDINALITY</name>
+                <parentId>30</parentId>
+            </children>
+            <children>
+                <description>COLLECT(column) 형식으로 사용합니다.
+                    COLLECT 함수는 인수로 모든 유형의 열을 사용하고 선택된 행에서 입력 유형의 중첩 테이블을 생성합니다. 이 함수의 결과를 얻으려면 CAST
+                    함수 내에서 사용해야 합니다.
+                    만약 column 자체가 컬렉션인 경우, COLLECT의 출력은 컬렉션의 중첩 테이블입니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT CAST(COLLECT(column_name) AS nested_table_type) AS
+                            collected_data FROM your_table GROUP BY group_column;</query>
+                    </example>
+                </examples>
+                <name>COLLECT</name>
+                <parentId>30</parentId>
+            </children>
+            <children>
+                <description>POWERMULTISET(expr) 형식으로 사용합니다.
+                    POWERMULTISET 함수는 중첩 테이블을 입력으로 받고, 입력 중첩 테이블의 모든 비어 있지 않은 하위 집합 (서브멀티셋이라고 함)을
+                    포함하는 중첩 테이블의 중첩 테이블을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT POWERMULTISET(CAST(COLLECT(column_name) AS nested_table_type))
+                            AS submultisets FROM your_table GROUP BY group_column;</query>
+                    </example>
+                </examples>
+                <name>POWERMULTISET</name>
+                <parentId>30</parentId>
+            </children>
+            <children>
+                <description>POWERMULTISET_BY_CARDINALITY(expr, cardinality) 형식으로 사용합니다.
+                    POWERMULTISET_BY_CARDINALITY 함수는 중첩 테이블과 기수(cardinality)를 입력으로 받고, 지정된 기수의 중첩
+                    테이블에 포함된 모든 비어 있지 않은 하위 집합(서브멀티셋)을 포함하는 중첩 테이블의 중첩 테이블을 반환합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT POWERMULTISET_BY_CARDINALITY(CAST(COLLECT(column_name) AS
+                            nested_table_type), specified_cardinality) AS submultisets FROM
+                            your_table GROUP BY group_column;</query>
+                    </example>
+                </examples>
+                <name>POWERMULTISET_BY_CARDINALITY</name>
+                <parentId>30</parentId>
+            </children>
+            <children>
+                <description>SET(nested_table) 형식으로 사용합니다.
+                    SET 함수는 중첩 테이블을 중복을 제거하여 집합으로 변환합니다. 이 함수는 서로 다른 요소로 이루어진 중첩 테이블을 반환합니다. 반환된 중첩
+                    테이블은 입력 중첩 테이블과 동일한 유형입니다.
+                    중첩 테이블의 요소 유형은 비교 가능해야 합니다.
+</description>
+                <examples>
+                    <example>
+                        <query>SELECT SET(CAST(COLLECT(column_name) AS nested_table_type)) AS
+                            distinct_elements FROM your_table GROUP BY group_column;</query>
+                    </example>
+                </examples>
+                <name>SET</name>
+                <parentId>30</parentId>
+            </children>
+            <description>컬럭션 함수는 중첩 테이블과 변수 배열에 대해 동작합니다.</description>
+            <name>컬렉션 함수(Collection Functions)</name>
+            <parentId>9</parentId>
+        </children>
+        <description>다중행 함수는 집계함수, 그룹함수, 윈도우 함수로 구분된다.</description>
+        <name>다중행 함수(Multi-Row-Function)</name>
+        <parentId>1</parentId>
+    </children>
+    <description>오라클의 함수는 내장함수와 사용자 정의 함수로 나눌 수 있는데, 내장함수는 단일행 함수와 다중행 함수로 나눌 수 있습니다.
+        함수의 입력 행 수에 따라 단일행 함수와 다중행 함수로 구분할 수 있습니다.</description>
+    <name>오라클 함수</name>
+    <parentId>0</parentId>
+</dbFn>

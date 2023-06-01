@@ -1,6 +1,6 @@
 # oracle_fns_output
 https://github.com/leebyeongkeon/fn_server.git
-서버
+서버  
 https://github.com/leebyeongkeon/nexa_oracle.git
 클라이언트
 

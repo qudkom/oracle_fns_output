@@ -1,4 +1,10 @@
 # oracle_fns_output
+https://github.com/leebyeongkeon/fn_server.git
+서버
+https://github.com/leebyeongkeon/nexa_oracle.git
+클라이언트
+
+
 ![00](https://github.com/leebyeongkeon/oracle_fns_output/assets/60059382/2bfed188-bb87-43de-8771-bbd1edeaf97a)
 
 완성된 결과 화면입니다. 최상위 항목인 오라클 함수를 기본적으로 보여줍니다.
